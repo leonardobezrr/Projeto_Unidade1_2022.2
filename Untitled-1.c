@@ -11,8 +11,7 @@
 
 #include <stdio.h>
 #include <locale.h>
-
-/////
+////////
 // Assinatura das funções
 void tela_principal(void);
 void tela_sobre(void);
@@ -24,6 +23,7 @@ int main(void) {
     tela_principal();
     tela_sobre();
     tela_equipe();
+    system("pause");
     return 0;
 }
 
@@ -60,7 +60,7 @@ void tela_principal(void) {
 void mod1(void){
 
     setlocale(LC_ALL,"");
-    printf("\n")
+    printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuários                              ///\n");
     printf("///                                                                         ///\n");
@@ -74,13 +74,13 @@ void mod1(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-  
+
 }
 //Módulo Estoque
 void mod2(void){
 
     setlocale(LC_ALL,"");
-    printf("\n")
+    printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Estoque                               ///\n");
     printf("///                                                                         ///\n");
@@ -94,13 +94,13 @@ void mod2(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-  
+
 }
 //Módulo Funcionários
 void mod3(void){
 
     setlocale(LC_ALL,"");
-    printf("\n")
+    printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                            Menu Funcionário                             ///\n");
     printf("///                                                                         ///\n");
@@ -114,13 +114,13 @@ void mod3(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-  
+
 }
 //Módulo Relatórios
 void mod4(void){
 
     setlocale(LC_ALL,"");
-    printf("\n")
+    printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                            Menu Relatório                               ///\n");
     printf("///                                                                         ///\n");
@@ -132,7 +132,7 @@ void mod4(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-  
+
 }
 // Tela sobre o projeto
 void tela_sobre(void) {
