@@ -30,7 +30,7 @@ int main(void) {
 
 /////
 // Funções
-
+//Primeira tela do programa
 void tela_principal(void) {
     setlocale(LC_ALL,"");
     printf("\n");
@@ -56,8 +56,85 @@ void tela_principal(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 }
+// Módulo Usuário
+void mod1(void){
 
+    setlocale(LC_ALL,"");
+    printf("\n")
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuários                              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. Cadastrar Usuário                                         ///\n");
+    printf("///            2. Atualizar Usuário                                         ///\n");
+    printf("///            3. Remover Usuário                                           ///\n");
+    printf("///            4. Listar Usuários                                           ///\n");
+    printf("///            5. Procurar Usuário                                          ///\n");
+    printf("///            0. Sair                                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+  
+}
+//Módulo Estoque
+void mod2(void){
 
+    setlocale(LC_ALL,"");
+    printf("\n")
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Estoque                               ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. Cadastrar Produto                                         ///\n");
+    printf("///            2. Atualizar Produto                                         ///\n");
+    printf("///            3. Remover Produto                                           ///\n");
+    printf("///            4. Procurar Produto                                          ///\n");
+    printf("///            5. Listar Produtos                                           ///\n");
+    printf("///            0. Sair                                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+  
+}
+//Módulo Funcionários
+void mod3(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n")
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                            Menu Funcionário                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. Cadastrar Funcionário                                     ///\n");
+    printf("///            2. Atualizar Funcionário                                     ///\n");
+    printf("///            3. Remover Funcionário                                       ///\n");
+    printf("///            4. Procurar Funcionário                                      ///\n");
+    printf("///            5. Listar Funcionários                                       ///\n");
+    printf("///            0. Sair                                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+  
+}
+//Módulo Relatórios
+void mod4(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n")
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                            Menu Relatório                               ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. Listar Relatório de vendas                                ///\n");
+    printf("///            2. Listar Gastos                                             ///\n");
+    printf("///            3. Listar Lucros                                             ///\n");
+    printf("///            0. Sair                                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+  
+}
+// Tela sobre o projeto
 void tela_sobre(void) {
     setlocale(LC_ALL,"");
     printf("\n");
@@ -84,7 +161,7 @@ void tela_sobre(void) {
     printf("\n");
 }
 
-
+// Tela Equipe responsável pelo projeto
 void tela_equipe(void) {
     setlocale(LC_ALL,"");
     printf("\n");
