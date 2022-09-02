@@ -178,7 +178,7 @@ void tela_equipe(void) {
     printf("///                                                                         ///\n");
     printf("///            = = = = = Sistema de Gestão Farmaceutica = = = = =           ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Este projeto exemplo foi desenvolvido por:                   ///\n");
+    printf("///            Este projeto foi desenvolvido por:                           ///\n");
     printf("///                                                                         ///\n");
     printf("///            Leonardo Alves, aluno UFRN                                   ///\n");
     printf("///            E-mail: leonardo.bezerra.110@ufrn.edu.br                     ///\n");
