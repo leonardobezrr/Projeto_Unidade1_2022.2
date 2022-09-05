@@ -10,12 +10,22 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <locale.h>
 ////////
 // Assinatura das funções
 void tela_principal(void);
 void tela_sobre(void);
 void tela_equipe(void);
+void mod1(void);
+void mod1_1(void);
+void mod1_2(void);
+void mod1_3(void);
+void mod1_4(void);
+void mod1_5(void);
+void mod2(void);
+void mod3(void);
+void mod4(void);
 
 /////
 // Programa principal
@@ -23,7 +33,16 @@ int main(void) {
     tela_principal();
     tela_sobre();
     tela_equipe();
-    system("pause");
+    mod1();   // modulo usuario
+    mod1_1(); // cadastrar usuario
+    mod1_2();  // atualizar usuario
+    mod1_3();  // remover usuario
+    mod1_4();  // listar usuario
+    mod1_5();  // procurar usuario
+    mod2();  //modulo estoque
+    mod3();  // modulo funcionarios
+    mod4();  // modulo relatorios
+
     return 0;
 }
 
@@ -71,6 +90,104 @@ void mod1(void){
     printf("///            4. Listar Usuários                                           ///\n");
     printf("///            5. Procurar Usuário                                          ///\n");
     printf("///            0. Sair                                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+
+}
+////////////////////////
+////cadastrar usuário_1//
+////////////////////////
+void mod1_1(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuários                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                            Cadastrar Usuário                            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Informe seu nome:                                            ///\n");
+    printf("///            Sua data de nascimento:                                      ///\n");
+    printf("///            Email:                                                       ///\n");
+    printf("///            Telefone:                                                    ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+
+}
+///////////////////////
+////atualizar usuario_2///
+///////////////////////
+void mod1_2(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuários                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                            Atualizar Usuário                            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Informe o email:                                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+
+}
+///////////////////////
+////remover usuario_3///
+///////////////////////
+void mod1_3(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuários                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Remover Usuário                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Informe o email:                                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+
+}
+/////////////////   //////
+////listar usuario_4///
+///////////////////////
+void mod1_4(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuários                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Listar Usuários                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Usuários cadastrados:                                        ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+
+}
+///////////////////////
+////procurar usuario_5///
+///////////////////////
+void mod1_5(void){
+
+    setlocale(LC_ALL,"");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuários                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Procurar Usuário                            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Informe o email:                                             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
