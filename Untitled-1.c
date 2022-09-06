@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///                                Semana 1                                 ///
 ///////////////////////////////////////////////////////////////////////////////
-
+//utilizar getchar();    depois do scanf, para tirar o Enter
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -51,25 +51,25 @@ int main(void) {
 // Funções
 //Primeira tela do programa
 void tela_principal(void) {
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///             Universidade Federal do Rio Grande do Norte                 ///\n");
-    printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
-    printf("///               Departamento de Computação e Tecnologia                   ///\n");
-    printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                  Projeto Sistema de Gestão Farmaceutica                 ///\n");
+    printf("///                 Centro de Ensino Superior do Serido                     ///\n");
+    printf("///               Departamento de Computacao e Tecnologia                   ///\n");
+    printf("///                  Disciplina DCT1106 -- Programacao                      ///\n");
+    printf("///                  Projeto Sistema de Gestao Farmaceutica                 ///\n");
     printf("///             Developed by @leonardobezrr_ -- since August, 2022          ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = Sistema de Gestão Farmaceutica = = = = =           ///\n");
+    printf("///            = = = = = Sistema de Gestao Farmaceutica = = = = =           ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Módulo Usuários                                           ///\n");
-    printf("///            2. Módulo Estoque                                            ///\n");
-    printf("///            3. Módulo Funcionários                                       ///\n");
-    printf("///            4. Módulo Relatórios                                         ///\n");
+    printf("///            1. Modulo Usuarios                                           ///\n");
+    printf("///            2. Modulo Estoque                                            ///\n");
+    printf("///            3. Modulo Funcionarios                                       ///\n");
+    printf("///            4. Modulo Relatorios                                         ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -78,17 +78,17 @@ void tela_principal(void) {
 // Módulo Usuário
 void mod1(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuários                              ///\n");
+    printf("///                              Menu Usuarios                              ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar Usuário                                         ///\n");
-    printf("///            2. Atualizar Usuário                                         ///\n");
-    printf("///            3. Remover Usuário                                           ///\n");
-    printf("///            4. Listar Usuários                                           ///\n");
-    printf("///            5. Procurar Usuário                                          ///\n");
+    printf("///            1. Cadastrar Usuario                                         ///\n");
+    printf("///            2. Atualizar Usuario                                         ///\n");
+    printf("///            3. Remover Usuario                                           ///\n");
+    printf("///            4. Listar Usuario                                            ///\n");
+    printf("///            5. Procurar Usuario                                          ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -100,12 +100,12 @@ void mod1(void){
 ////////////////////////
 void mod1_1(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuários                              ///\n");
+    printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                            Cadastrar Usuário                            ///\n");
+    printf("///                            Cadastrar Usuario                            ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe seu nome:                                            ///\n");
@@ -122,12 +122,12 @@ void mod1_1(void){
 ///////////////////////
 void mod1_2(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuários                              ///\n");
+    printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                            Atualizar Usuário                            ///\n");
+    printf("///                            Atualizar Usuario                            ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o email:                                             ///\n");
@@ -141,12 +141,12 @@ void mod1_2(void){
 ///////////////////////
 void mod1_3(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuários                              ///\n");
+    printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Remover Usuário                             ///\n");
+    printf("///                             Remover Usuario                             ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o email:                                             ///\n");
@@ -160,15 +160,15 @@ void mod1_3(void){
 ///////////////////////
 void mod1_4(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuários                              ///\n");
+    printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Listar Usuários                             ///\n");
+    printf("///                             Listar Usuarios                             ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Usuários cadastrados:                                        ///\n");
+    printf("///            Usuarios cadastrados:                                        ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -179,12 +179,12 @@ void mod1_4(void){
 ///////////////////////
 void mod1_5(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuários                              ///\n");
+    printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Procurar Usuário                            ///\n");
+    printf("///                             Procurar Usuario                            ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o email:                                             ///\n");
@@ -196,7 +196,7 @@ void mod1_5(void){
 //Módulo Estoque
 void mod2(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Estoque                               ///\n");
@@ -213,20 +213,20 @@ void mod2(void){
     printf("\n");
 
 }
-//Módulo Funcionários
+//Módulo Funcionarios
 void mod3(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                            Menu Funcionário                             ///\n");
+    printf("///                            Menu Funcionario                             ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar Funcionário                                     ///\n");
-    printf("///            2. Atualizar Funcionário                                     ///\n");
-    printf("///            3. Remover Funcionário                                       ///\n");
-    printf("///            4. Procurar Funcionário                                      ///\n");
-    printf("///            5. Listar Funcionários                                       ///\n");
+    printf("///            1. Cadastrar Funcionario                                     ///\n");
+    printf("///            2. Atualizar Funcionario                                     ///\n");
+    printf("///            3. Remover Funcionario                                       ///\n");
+    printf("///            4. Procurar Funcionario                                      ///\n");
+    printf("///            5. Listar Funcionarios                                       ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -236,13 +236,13 @@ void mod3(void){
 //Módulo Relatórios
 void mod4(void){
 
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                            Menu Relatório                               ///\n");
+    printf("///                            Menu Relatorio                               ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Listar Relatório de vendas                                ///\n");
+    printf("///            1. Listar Relatorio de vendas                                ///\n");
     printf("///            2. Listar Gastos                                             ///\n");
     printf("///            3. Listar Lucros                                             ///\n");
     printf("///            0. Sair                                                      ///\n");
@@ -253,26 +253,26 @@ void mod4(void){
 }
 // Tela sobre o projeto
 void tela_sobre(void) {
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///             Universidade Federal do Rio Grande do Norte                 ///\n");
-    printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
-    printf("///               Departamento de Computação e Tecnologia                   ///\n");
-    printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                  Projeto Sistema de Gestão Farmaceutica                 ///\n");
+    printf("///                 Centro de Ensino Superior do Serido                     ///\n");
+    printf("///               Departamento de Computacao e Tecnologia                   ///\n");
+    printf("///                  Disciplina DCT1106 -- Programacao                      ///\n");
+    printf("///                  Projeto Sistema de Gestao Farmaceutica                 ///\n");
     printf("///             Developed by @leonardobezrr_ -- since August, 2022          ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = Sistema de Gestão Farmaceutica = = = = =           ///\n");
+    printf("///            = = = = = Sistema de Gestao Farmaceutica = = = = =           ///\n");
     printf("///                                                                         ///\n");
-    printf("///  Programa exemplo utilizado na disciplina DCT1106 - Programação, para   ///\n");
-    printf("///  fins didáticos de ilustração. O programa contém os principais módulos  ///\n");
-    printf("///  e funcionalidades que serão exigidos na avaliação dos projetos a serem ///\n");
+    printf("///  Programa exemplo utilizado na disciplina DCT1106 - Programacao, para   ///\n");
+    printf("///  fins didaticos de ilustracao. O programa contem os principais modulos  ///\n");
+    printf("///  e funcionalidades que serao exigidos na avaliacao dos projetos a serem ///\n");
     printf("///  desenvolvidos pelos alunos ao longo da disciplina. Serve como um guia  ///\n");
-    printf("///  de consulta e referência para o desenvolvidos dos demais projetos.     ///\n");
+    printf("///  de consulta e referencia para o desenvolvidos dos demais projetos.     ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -280,20 +280,20 @@ void tela_sobre(void) {
 
 // Tela Equipe responsável pelo projeto
 void tela_equipe(void) {
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///             Universidade Federal do Rio Grande do Norte                 ///\n");
-    printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
-    printf("///               Departamento de Computação e Tecnologia                   ///\n");
-    printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                  Projeto Sistema de Gestão Farmaceutica                 ///\n");
+    printf("///                 Centro de Ensino Superior do Serido                     ///\n");
+    printf("///               Departamento de Computacao e Tecnologia                   ///\n");
+    printf("///                  Disciplina DCT1106 -- Programacao                      ///\n");
+    printf("///                  Projeto Sistema de Gestao Farmaceutica                 ///\n");
     printf("///             Developed by @leonardobezrr_ -- since August, 2022          ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = Sistema de Gestão Farmaceutica = = = = =           ///\n");
+    printf("///            = = = = = Sistema de Gestao Farmaceutica = = = = =           ///\n");
     printf("///                                                                         ///\n");
     printf("///            Este projeto foi desenvolvido por:                           ///\n");
     printf("///                                                                         ///\n");
