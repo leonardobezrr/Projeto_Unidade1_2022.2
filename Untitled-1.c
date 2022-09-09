@@ -30,6 +30,7 @@ void mod4(void);
 /////
 // Programa principal
 int main(void) {
+
     tela_principal();
     tela_sobre();
     tela_equipe();
@@ -42,7 +43,6 @@ int main(void) {
     mod2();  //modulo estoque
     mod3();  // modulo funcionarios
     mod4();  // modulo relatorios
-
     return 0;
 }
 
@@ -51,6 +51,7 @@ int main(void) {
 // Funções
 //Primeira tela do programa
 void tela_principal(void) {
+    char perg;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -73,7 +74,13 @@ void tela_principal(void) {
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
+    printf("\n             O que deseja? ");
+    scanf("%c",&perg);
+    getchar();
+    return perg;
+    
+    
+
 }
 // Módulo Usuário
 void mod1(void){
