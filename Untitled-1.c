@@ -32,8 +32,6 @@ void mod4(void);
 int main(void) {
 
     tela_principal();
-    //tela_sobre();
-    //tela_equipe();
     mod1();   // modulo usuario
     mod1_1(); // cadastrar usuario
     mod1_2();  // atualizar usuario
@@ -43,6 +41,8 @@ int main(void) {
     //mod2();  //modulo estoque
     //mod3();  // modulo funcionarios
     //mod4();  // modulo relatorios
+    tela_sobre();
+    tela_equipe();
     return 0;
 }
 
@@ -79,10 +79,7 @@ void tela_principal(void) {
     scanf("%c",&perg);
     getchar();
     return perg;
-    
-    
-
-}
+    }
 // Módulo Usuário
 void mod1(void){
     system("cls");
@@ -133,11 +130,10 @@ void mod1_1(void){
     scanf ("%c[@_a-z.]",&email);
     getchar();
     printf("Telefone (99) 99999-9999: ");
-    scanf ("%c[()0-9 ",&numero);
+    scanf ("%c[()0-9] ",&numero);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     
     system("pause");
     printf("\n");
@@ -157,11 +153,10 @@ void mod1_2(void){
     printf("///                            Atualizar Usuario                            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o email:                                            \n");
+    printf("Informe o email: ");
     scanf("%c[@_a-z.]",&email);
     getchar();
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     return mod1();
 }
@@ -179,11 +174,10 @@ void mod1_3(void){
     printf("///                            Remover Usuario                              ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o email:                                            \n");
+    printf("Informe o email: ");
     scanf("%c[@_a-z.]",&email);
     getchar();
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     return mod1();
 
@@ -192,17 +186,16 @@ void mod1_3(void){
 ////listar usuario_4///
 ///////////////////////
 void mod1_4(void){
-
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
     printf("///                             Listar Usuarios                             ///\n");
     printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Usuarios cadastrados:                                        ///\n");
-    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Usuarios cadastrados:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 
@@ -211,19 +204,22 @@ void mod1_4(void){
 ////procurar usuario_5///
 ///////////////////////
 void mod1_5(void){
-
+    char email;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
     printf("///                             Procurar Usuario                            ///\n");
     printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o email:                                             ///\n");
-    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Informe o email: ");
+    scanf("%c[@_a-z.]",&email);
+    getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    return mod1();
 
 }
 //Módulo Estoque
@@ -310,6 +306,7 @@ void tela_sobre(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
 }
 
 // Tela Equipe responsável pelo projeto
@@ -339,4 +336,5 @@ void tela_equipe(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
 }
