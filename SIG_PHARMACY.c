@@ -51,7 +51,7 @@ int main(void) {
 // Funções
 //Primeira tela do programa
 void tela_principal(void) {
-    system("cls");
+    system("cls||clear");
     char perg;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -82,7 +82,7 @@ void tela_principal(void) {
     }
 // Módulo Usuário
 void mod1(void){
-    system("cls");
+    system("cls||clear");
     char perg_us;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -224,7 +224,7 @@ void mod1_5(void){
 }
 //Módulo Estoque
 void mod2(void){
-    system("cls");
+    system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -244,7 +244,7 @@ void mod2(void){
 }
 //Módulo Funcionarios
 void mod3(void){
-    system("cls");
+    system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -264,7 +264,7 @@ void mod3(void){
 }
 //Módulo Relatórios
 void mod4(void){
-    system("cls");
+    system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -282,7 +282,7 @@ void mod4(void){
 }
 // Tela sobre o projeto
 void tela_sobre(void) {
-    system("cls");
+    system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -311,7 +311,7 @@ void tela_sobre(void) {
 
 // Tela Equipe responsável pelo projeto
 void tela_equipe(void) {
-    system("cls");
+    system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
