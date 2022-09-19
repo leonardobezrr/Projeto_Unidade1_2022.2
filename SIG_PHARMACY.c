@@ -78,7 +78,6 @@ void tela_principal(void) {
     printf("\n             O que deseja? ");
     scanf("%c",&perg);
     getchar();
-    return perg;
     }
 // Módulo Usuário
 void mod1(void){
@@ -101,7 +100,6 @@ void mod1(void){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_us);
     getchar();
-    return perg_us;    
 }
 ////////////////////////
 ////cadastrar usuário_1//
@@ -137,7 +135,6 @@ void mod1_1(void){
     
     system("pause");
     printf("\n");
-    return mod1();
 }
 ///////////////////////
 ////atualizar usuario_2///
@@ -158,7 +155,6 @@ void mod1_2(void){
     getchar();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    return mod1();
 }
 ///////////////////////
 ////remover usuario_3///
@@ -179,7 +175,6 @@ void mod1_3(void){
     getchar();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    return mod1();
 
 }
 /////////////////   //////
@@ -219,7 +214,6 @@ void mod1_5(void){
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    return mod1();
 
 }
 //Módulo Estoque
