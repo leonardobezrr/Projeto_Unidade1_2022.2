@@ -17,12 +17,12 @@
 void tela_principal(void);
 void tela_sobre(void);
 void tela_equipe(void);
-void mod1(void);
-void mod1_1(void);
-void mod1_2(void);
-void mod1_3(void);
-void mod1_4(void);
-void mod1_5(void);
+void mod_usuario(void);
+void mod_us_cadastrar(void);
+void mod_us_atualizar(void);
+void mod_us_remover(void);
+void mod_us_listar(void);
+void mod_us_procurar(void);
 void mod2(void);
 void mod3(void);
 void mod4(void);
@@ -32,12 +32,12 @@ void mod4(void);
 int main(void) {
 
     tela_principal();
-    mod1();   // modulo usuario
-    mod1_1(); // cadastrar usuario
-    mod1_2();  // atualizar usuario
-    mod1_3();  // remover usuario
-    mod1_4();  // listar usuario
-    mod1_5();  // procurar usuario
+    mod_usuario();   // modulo usuario
+    mod_us_cadastrar(); // cadastrar usuario
+    mod_us_atualizar();  // atualizar usuario
+    mod_us_remover();  // remover usuario
+    mod_us_listar();  // listar usuario
+    mod_us_procurar();  // procurar usuario
     //mod2();  //modulo estoque
     //mod3();  // modulo funcionarios
     //mod4();  // modulo relatorios
@@ -80,7 +80,7 @@ void tela_principal(void) {
     getchar();
     }
 // Módulo Usuário
-void mod1(void){
+void mod_usuario(void){
     system("cls||clear");
     char perg_us;
     setlocale(LC_ALL,"Portuguese");
@@ -104,7 +104,7 @@ void mod1(void){
 ////////////////////////
 ////cadastrar usuário_1//
 ////////////////////////
-void mod1_1(void){
+void mod_us_cadastrar(void){
     char nome[20];
     char data[9];
     char email[40];
@@ -139,7 +139,7 @@ void mod1_1(void){
 ///////////////////////
 ////atualizar usuario_2///
 ///////////////////////
-void mod1_2(void){
+void mod_us_atualizar(void){
     char email[40];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -159,7 +159,7 @@ void mod1_2(void){
 ///////////////////////
 ////remover usuario_3///
 ///////////////////////
-void mod1_3(void){
+void mod_us_remover(void){
     char email[40];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -180,7 +180,7 @@ void mod1_3(void){
 /////////////////   //////
 ////listar usuario_4///
 ///////////////////////
-void mod1_4(void){
+void mod_us_listar(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -198,7 +198,7 @@ void mod1_4(void){
 ///////////////////////
 ////procurar usuario_5///
 ///////////////////////
-void mod1_5(void){
+void mod_us_procurar(void){
     char email;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
