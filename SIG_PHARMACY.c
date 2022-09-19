@@ -17,15 +17,19 @@
 void tela_principal(void);
 void tela_sobre(void);
 void tela_equipe(void);
+//mod usuário
 void mod_usuario(void);
 void mod_us_cadastrar(void);
 void mod_us_atualizar(void);
 void mod_us_remover(void);
 void mod_us_listar(void);
 void mod_us_procurar(void);
-void mod2(void);
-void mod3(void);
-void mod4(void);
+//mod estoque 
+void mod_estoque(void);
+//mod funcionario
+void mod_funcionario(void);
+//mod relatorio
+void mod_relatorio(void);
 
 /////
 // Programa principal
@@ -38,9 +42,9 @@ int main(void) {
     mod_us_remover();  // remover usuario
     mod_us_listar();  // listar usuario
     mod_us_procurar();  // procurar usuario
-    //mod2();  //modulo estoque
-    //mod3();  // modulo funcionarios
-    //mod4();  // modulo relatorios
+    //mod_estoque();  //modulo estoque
+    //mod_funcionario();  // modulo funcionarios
+    //mod_relatorio();  // modulo relatorios
     tela_sobre();
     tela_equipe();
     return 0;
@@ -217,7 +221,7 @@ void mod_us_procurar(void){
 
 }
 //Módulo Estoque
-void mod2(void){
+void mod_estoque(void){
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -237,7 +241,7 @@ void mod2(void){
 
 }
 //Módulo Funcionarios
-void mod3(void){
+void mod_funcionario(void){
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -257,7 +261,7 @@ void mod3(void){
 
 }
 //Módulo Relatórios
-void mod4(void){
+void mod_relatorio(void){
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
