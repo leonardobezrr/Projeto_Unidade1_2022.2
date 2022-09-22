@@ -126,13 +126,13 @@ void mod_us_cadastrar(void){
     scanf ("%[A-Z a-z]",nome);
     getchar();
     printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%[0-9/",data);
+    scanf ("%[0-9/ ",data);
     getchar();
     printf("Email: ");
-    scanf ("%[@_.a-z0-9]",email);
+    scanf ("%[@_.a-z0-9 ]",email);
     getchar();
     printf("Telefone (99) 99999-9999: ");
-    scanf ("%[()0-9] ",numero);
+    scanf ("%[() 0-9] ",numero);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
