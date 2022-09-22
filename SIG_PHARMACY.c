@@ -123,16 +123,16 @@ void mod_us_cadastrar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe seu nome: ");
-    scanf ("%c[A-Z a-z]",&nome);
+    scanf ("%[A-Z a-z]",nome);
     getchar();
     printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%c[0-9/",&data);
+    scanf ("%[0-9/",data);
     getchar();
     printf("Email: ");
-    scanf ("%c[@_a-z.]",&email);
+    scanf ("%[@_.a-z0-9]",email);
     getchar();
     printf("Telefone (99) 99999-9999: ");
-    scanf ("%c[()0-9] ",&numero);
+    scanf ("%[()0-9] ",numero);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -155,7 +155,7 @@ void mod_us_atualizar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe o email: ");
-    scanf("%c[@_a-z.]",&email);
+    scanf("%[@_.a-z0-9]",email);
     getchar();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -175,7 +175,7 @@ void mod_us_remover(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe o email: ");
-    scanf("%c[@_a-z.]",&email);
+    scanf("%[@_.a-z0-9]",email);
     getchar();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -203,7 +203,7 @@ void mod_us_listar(void){
 ////procurar usuario_5///
 ///////////////////////
 void mod_us_procurar(void){
-    char email;
+    char email[40];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -214,7 +214,7 @@ void mod_us_procurar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Informe o email: ");
-    scanf("%c[@_a-z.]",&email);
+    scanf("%[@_.a-z0-9]",email);
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
