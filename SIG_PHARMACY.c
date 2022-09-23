@@ -26,6 +26,7 @@ void mod_us_listar(void);
 void mod_us_procurar(void);
 //mod estoque 
 void mod_estoque(void);
+void mod_es_cadastrar(void);
 //mod funcionario
 void mod_funcionario(void);
 //mod relatorio
@@ -36,13 +37,16 @@ void mod_relatorio(void);
 int main(void) {
 
     tela_principal();
+    //USUARIO
     mod_usuario();   // modulo usuario
     mod_us_cadastrar(); // cadastrar usuario
     mod_us_atualizar();  // atualizar usuario
     mod_us_remover();  // remover usuario
     mod_us_listar();  // listar usuario
     mod_us_procurar();  // procurar usuario
-    //mod_estoque();  //modulo estoque
+    //ESTOQUE 
+    mod_estoque();  //modulo estoque
+    mod_es_cadastrar(); // cadastrar produto
     //mod_funcionario();  // modulo funcionarios
     //mod_relatorio();  // modulo relatorios
     tela_sobre();
@@ -157,6 +161,7 @@ void mod_us_atualizar(void){
     printf("Informe o email: ");
     scanf("%[@_.a-z0-9]",email);
     getchar();
+    printf("\n               Cadastrado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 }
@@ -223,6 +228,7 @@ void mod_us_procurar(void){
 //Módulo Estoque
 void mod_estoque(void){
     system("cls||clear");
+    char perg_es;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -237,9 +243,43 @@ void mod_estoque(void){
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n             O que deseja? ");
+    scanf("%c",&perg_es);
+    getchar();
+
+}
+
+void mod_es_cadastrar(void){
+    
+    char nome[20];
+    char qnt[9];
+    char cod[20];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Menu Estoque                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                           Cadastrar Produto                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe o nome do produto: ");
+    scanf ("%[A-Z a-z]",nome);
+    getchar();
+    printf("Informe a quantidade: ");
+    scanf ("%[0-9]",qnt);
+    getchar();
+    printf("Informe o código: ");
+    scanf ("%[0-9]",cod);
+    getchar();
+    printf("\n               Cadastrado com sucesso!                                       \n");
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    
+    system("pause");
     printf("\n");
 
 }
+
 //Módulo Funcionarios
 void mod_funcionario(void){
     system("cls||clear");
