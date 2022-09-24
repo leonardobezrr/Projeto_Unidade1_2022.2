@@ -27,6 +27,7 @@ void mod_us_procurar(void);
 //mod estoque 
 void mod_estoque(void);
 void mod_es_cadastrar(void);
+void mod_es_atualizar(void);
 //mod funcionario
 void mod_funcionario(void);
 //mod relatorio
@@ -47,6 +48,7 @@ int main(void) {
     //ESTOQUE 
     mod_estoque();  //modulo estoque
     mod_es_cadastrar(); // cadastrar produto
+    mod_es_atualizar();
     //mod_funcionario();  // modulo funcionarios
     //mod_relatorio();  // modulo relatorios
     tela_sobre();
@@ -130,10 +132,10 @@ void mod_us_cadastrar(void){
     scanf ("%[A-Z a-z]",nome);
     getchar();
     printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%[0-9/ ",data);
+    scanf ("%[ 0-9/ ]",data);
     getchar();
     printf("Email: ");
-    scanf ("%[@_.a-z0-9 ]",email);
+    scanf("%[@ _ . a-z 0-9]",email);
     getchar();
     printf("Telefone (99) 99999-9999: ");
     scanf ("%[() 0-9] ",numero);
@@ -159,7 +161,7 @@ void mod_us_atualizar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%[@ _ . a-z 0-9]",email);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -180,7 +182,7 @@ void mod_us_remover(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%[@ _ . a-z 0-9]",email);
     getchar();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -219,7 +221,7 @@ void mod_us_procurar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%[@_. a-z 0-9]",email);
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -248,7 +250,7 @@ void mod_estoque(void){
     getchar();
 
 }
-
+// cadastrar produto 
 void mod_es_cadastrar(void){
     
     char nome[20];
@@ -267,15 +269,69 @@ void mod_es_cadastrar(void){
     scanf ("%[A-Z a-z]",nome);
     getchar();
     printf("Informe a quantidade: ");
-    scanf ("%[0-9]",qnt);
+    scanf ("%[0-9 ]",qnt);
     getchar();
-    printf("Informe o código: ");
-    scanf ("%[0-9]",cod);
+    printf("Informe o codigo: ");
+    scanf ("%[0-9 ]",cod);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     
     system("pause");
+    printf("\n");
+
+}
+
+//atualizar produto 
+void mod_es_atualizar(void){
+    char cod[20];
+    char nome[20];
+    char cod_novo[20];
+    char qnt[10];
+
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Menu Esqoque                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                            Atualizar Produto                            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe o codigo: ");
+    scanf("%[0-9 ]",cod);
+    getchar();
+    printf("Informe o novo nome (ou o mesmo): ");
+    scanf("%[a-z A-Z]",nome);
+    getchar();
+    printf("Informe o novo codigo (ou o mesmo): ");
+    scanf("%[0-9 ]",cod_novo);
+    getchar();
+    printf("Informe a quatidade: ");
+    scanf("%[0-9 ]",qnt);
+    getchar();
+    printf("\n               Cadastrado com sucesso!                                       \n");    
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+}
+
+//remover produto
+void mod_es_remover(void){
+    char cod[20];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuarios                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                            Remover Usuario                              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe o codigo: ");
+    scanf("%[0-9 ]",cod);
+    getchar();
+    printf("\n               Removido com sucesso!                                       \n");        
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 
 }
