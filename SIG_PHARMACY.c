@@ -32,6 +32,11 @@ void mod_es_remover(void);
 void mod_es_listar(void);
 //mod funcionario
 void mod_funcionario(void);
+void mod_fun_cadastrar(void);
+void mod_fun_atualizar(void);
+void mod_fun_remover(void);
+void mod_fun_listar(void);
+
 //mod relatorio
 void mod_relatorio(void);
 
@@ -39,28 +44,7 @@ void mod_relatorio(void);
 // Programa principal
 int main(void) {
 
-    tela_principal(); 
-    if (tela_principal() == 1)
-    {
-        mod_usuario();
-    }
-    else if (tela_principal() == 2)
-    {
-        mod_estoque();
-    }
-    else if (tela_principal() == 3)
-    {
-        mod_funcionario();
-    }
-    else if (tela_principal() == 4)
-    {
-        mod_relatorio();
-    }
-    else 
-    {
-        printf("você optou por encerrar o programa\n\n\nAté mais!!");
-    }
-    
+ 
     
     
         //USUARIO
@@ -76,7 +60,10 @@ int main(void) {
         mod_es_atualizar();
         mod_es_remover();
         mod_es_listar();
-        //mod_funcionario();  // modulo funcionarios
+        //FUNCIONARIO
+        mod_funcionario();  // modulo funcionarios
+        mod_fun_cadastrar(); // cadastrar funcionario
+        mod_fun_atualizar(); // atualizar funcionario
         //mod_relatorio();  // modulo relatorios
         tela_sobre();
         tela_equipe();
@@ -178,7 +165,10 @@ void mod_us_cadastrar(void){
 ////atualizar usuario_2///
 ///////////////////////
 void mod_us_atualizar(void){
+    char nome[20];
+    char data[9];
     char email[40];
+    char numero[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -191,7 +181,16 @@ void mod_us_atualizar(void){
     printf("Informe o email: ");
     scanf("%[@ _ . a-z 0-9]",email);
     getchar();
-    printf("\n               Cadastrado com sucesso!                                       \n");    
+    printf("Informe seu nome: ");
+    scanf ("%[A-Z a-z]",nome);
+    getchar();
+    printf("Sua data de nascimento (dd/mm/aa): ");
+    scanf ("%[ 0-9/ ]",data);
+    getchar();
+    printf("Telefone (99) 99999-9999: ");
+    scanf ("%[() 0-9] ",numero);
+    getchar();
+    printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 }
@@ -309,7 +308,6 @@ void mod_es_cadastrar(void){
     printf("\n");
 
 }
-
 //atualizar produto 
 void mod_es_atualizar(void){
     char cod[20];
@@ -342,7 +340,6 @@ void mod_es_atualizar(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 }
-
 //remover produto
 void mod_es_remover(void){
     char cod[20];
@@ -375,11 +372,10 @@ void mod_es_listar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Produtos cadastrados:");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     system("pause");
 }
-
 //Módulo Funcionarios
 void mod_funcionario(void){
     system("cls||clear");
@@ -398,10 +394,76 @@ void mod_funcionario(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-
 }
+//Cadastrar funcionario
+void mod_fun_cadastrar(void){
+    char nome[20];
+    char data[9];
+    char email[40];
+    char numero[20];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                           Menu Funcionario                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                         Cadastrar Funcionario                           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe seu nome: ");
+    scanf ("%[A-Z a-z]",nome);
+    getchar();
+    printf("Sua data de nascimento (dd/mm/aa): ");
+    scanf ("%[ 0-9/ ]",data);
+    getchar();
+    printf("Email: ");
+    scanf("%[@ _ . a-z 0-9]",email);
+    getchar();
+    printf("Telefone (99) 99999-9999: ");
+    scanf ("%[() 0-9] ",numero);
+    getchar();
+    printf("\n               Cadastrado com sucesso!                                       \n");
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    
+    system("pause");
+    printf("\n");
+}
+//Atualiazar funcionario 
+void mod_fun_atualizar(void){
+    char nome[20];
+    char data[9];
+    char email[40];
+    char numero[20];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                            Menu Funcionario                             ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                         Atualizar Funcionario                           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe o email: ");
+    scanf("%[@ _ . a-z 0-9]",email);
+    getchar();
+    printf("Informe seu nome: ");
+    scanf ("%[A-Z a-z]",nome);
+    getchar();
+    printf("Sua data de nascimento (dd/mm/aa): ");
+    scanf ("%[ 0-9/ ]",data);
+    getchar();
+    printf("Telefone (99) 99999-9999: ");
+    scanf ("%[() 0-9] ",numero);
+    getchar();
+    printf("\n               Atualizado com sucesso!                                       \n");    
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+}
+//Remover funcionario 
+//Listar funcionario
 //Módulo Relatórios
-void mod_relatorio(void){
+void mod_relatorio(void)
+{
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -416,7 +478,6 @@ void mod_relatorio(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-
 }
 // Tela sobre o projeto
 void tela_sobre(void) {
@@ -446,7 +507,6 @@ void tela_sobre(void) {
     printf("\n");
     system("pause");
 }
-
 // Tela Equipe responsável pelo projeto
 void tela_equipe(void) {
     system("cls||clear");
