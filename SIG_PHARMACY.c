@@ -14,7 +14,7 @@
 #include <locale.h>
 ////////
 // Assinatura das funções
-void tela_principal(void);
+char tela_principal();
 void tela_sobre(void);
 void tela_equipe(void);
 //mod usuário
@@ -28,6 +28,8 @@ void mod_us_procurar(void);
 void mod_estoque(void);
 void mod_es_cadastrar(void);
 void mod_es_atualizar(void);
+void mod_es_remover(void);
+void mod_es_listar(void);
 //mod funcionario
 void mod_funcionario(void);
 //mod relatorio
@@ -37,22 +39,47 @@ void mod_relatorio(void);
 // Programa principal
 int main(void) {
 
-    tela_principal();
-    //USUARIO
-    mod_usuario();   // modulo usuario
-    mod_us_cadastrar(); // cadastrar usuario
-    mod_us_atualizar();  // atualizar usuario
-    mod_us_remover();  // remover usuario
-    mod_us_listar();  // listar usuario
-    mod_us_procurar();  // procurar usuario
-    //ESTOQUE 
-    mod_estoque();  //modulo estoque
-    mod_es_cadastrar(); // cadastrar produto
-    mod_es_atualizar();
-    //mod_funcionario();  // modulo funcionarios
-    //mod_relatorio();  // modulo relatorios
-    tela_sobre();
-    tela_equipe();
+    tela_principal(); 
+    if (tela_principal() == 1)
+    {
+        mod_usuario();
+    }
+    else if (tela_principal() == 2)
+    {
+        mod_estoque();
+    }
+    else if (tela_principal() == 3)
+    {
+        mod_funcionario();
+    }
+    else if (tela_principal() == 4)
+    {
+        mod_relatorio();
+    }
+    else 
+    {
+        printf("você optou por encerrar o programa\n\n\nAté mais!!");
+    }
+    
+    
+    
+        //USUARIO
+        mod_usuario();   // modulo usuario
+        mod_us_cadastrar(); // cadastrar usuario
+        mod_us_atualizar();  // atualizar usuario
+        mod_us_remover();  // remover usuario
+        mod_us_listar();  // listar usuario
+        mod_us_procurar();  // procurar usuario
+        //ESTOQUE 
+        mod_estoque();  //modulo estoque
+        mod_es_cadastrar(); // cadastrar produto
+        mod_es_atualizar();
+        mod_es_remover();
+        mod_es_listar();
+        //mod_funcionario();  // modulo funcionarios
+        //mod_relatorio();  // modulo relatorios
+        tela_sobre();
+        tela_equipe();
     return 0;
 }
 
@@ -60,7 +87,7 @@ int main(void) {
 /////
 // Funções
 //Primeira tela do programa
-void tela_principal(void) {
+char tela_principal() {
     system("cls||clear");
     char perg;
     setlocale(LC_ALL,"Portuguese");
@@ -88,6 +115,7 @@ void tela_principal(void) {
     printf("\n             O que deseja? ");
     scanf("%c",&perg);
     getchar();
+    return perg;
     }
 // Módulo Usuário
 void mod_usuario(void){
@@ -334,6 +362,22 @@ void mod_es_remover(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 
+}
+//listar produtos do estoque 
+void mod_es_listar(void){
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Estoque                               ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                             Listar produtos                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Produtos cadastrados:");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    system("pause");
 }
 
 //Módulo Funcionarios
