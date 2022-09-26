@@ -38,6 +38,9 @@ void mod_fun_remover(void);
 void mod_fun_listar(void);
 //mod relatorio
 void mod_relatorio(void);
+void mod_rt_listar_vendas(void);
+void mod_rt_listar_lucros(void);
+void mod_rt_listar_gastos(void);
 
 /////
 // Programa principal
@@ -65,7 +68,11 @@ int main(void) {
         mod_fun_atualizar(); // atualizar funcionario
         mod_fun_remover(); // remover funcionario
         mod_fun_listar(); // listar funcionario
-        //mod_relatorio();  // modulo relatorios
+        //RELATORIO
+        mod_relatorio();  // modulo relatorios
+        mod_rt_listar_vendas(); 
+        mod_rt_listar_gastos();
+        mod_rt_listar_lucros();
         tela_sobre();
         tela_equipe();
     return 0;
@@ -224,7 +231,7 @@ void mod_us_listar(void){
     printf("Usuarios cadastrados:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-
+    system("pause");
 }
 ////procurar usuario_5///
 void mod_us_procurar(void){
@@ -503,6 +510,54 @@ void mod_relatorio(void)
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+}
+//listar relatorio de venda
+void mod_rt_listar_vendas(void){
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                           Menu Relatorio                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                         Listar Relatorio                                ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Relatorio de vendas:\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    system("pause");
+}
+//listar gastos
+void mod_rt_listar_gastos(void){
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                           Menu Relatorio                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                         Listar Gastos                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Relatorio de gastos:\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    system("pause");
+}
+//listar lucros
+void mod_rt_listar_lucros(void){
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                           Menu Relatorio                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                         Listar Lucros                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Relatorio de lucros:\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    system("pause");
 }
 // Tela sobre o projeto
 void tela_sobre(void) {
