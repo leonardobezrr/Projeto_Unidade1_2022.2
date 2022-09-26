@@ -36,7 +36,7 @@ void mod_fun_cadastrar(void);
 void mod_fun_atualizar(void);
 void mod_fun_remover(void);
 void mod_fun_listar(void);
-
+void mod_fun_remover(void);
 //mod relatorio
 void mod_relatorio(void);
 
@@ -64,6 +64,7 @@ int main(void) {
         mod_funcionario();  // modulo funcionarios
         mod_fun_cadastrar(); // cadastrar funcionario
         mod_fun_atualizar(); // atualizar funcionario
+        mod_fun_remover();
         //mod_relatorio();  // modulo relatorios
         tela_sobre();
         tela_equipe();
@@ -459,7 +460,26 @@ void mod_fun_atualizar(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
 }
-//Remover funcionario 
+//Remover funcionario
+void mod_fun_remover(void){
+    char email[40];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Usuarios                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                            Remover Usuario                              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe o email: ");
+    scanf("%[@ _ . a-z 0-9]",email);
+    getchar();
+    printf("\n               Removido com sucesso!                                       \n");    
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+
+}
 //Listar funcionario
 //Módulo Relatórios
 void mod_relatorio(void)
