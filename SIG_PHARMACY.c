@@ -18,26 +18,26 @@ char tela_principal();
 void tela_sobre(void);
 void tela_equipe(void);
 //mod usuário
-void mod_usuario(void);
+char mod_usuario();
 void mod_us_cadastrar(void);
 void mod_us_atualizar(void);
 void mod_us_remover(void);
 void mod_us_listar(void);
 void mod_us_procurar(void);
 //mod estoque 
-void mod_estoque(void);
+char mod_estoque();
 void mod_es_cadastrar(void);
 void mod_es_atualizar(void);
 void mod_es_remover(void);
 void mod_es_listar(void);
 //mod funcionario
-void mod_funcionario(void);
+char mod_funcionario();
 void mod_fun_cadastrar(void);
 void mod_fun_atualizar(void);
 void mod_fun_remover(void);
 void mod_fun_listar(void);
 //mod relatorio
-void mod_relatorio(void);
+char mod_relatorio();
 void mod_rt_listar_vendas(void);
 void mod_rt_listar_lucros(void);
 void mod_rt_listar_gastos(void);
@@ -46,39 +46,59 @@ void mod_rt_listar_gastos(void);
 // Programa principal
 int main(void) {
     char opcao;
- 
-    
-        opcao = tela_principal();
+        do {
+            opcao = tela_principal();
+            switch (opcao)
+            {
+            case '1': 
+            mod_usuario();
+            break;
+            case '2': 
+            mod_estoque();
+            break;
+            case '3': 
+            mod_funcionario();
+            break;
+            case '4': 
+            mod_relatorio();
+            break;
+            case '5': 
+            tela_equipe();
+            tela_sobre();
+            break;
+            }
+        }while (opcao!='0');
+        
         //USUARIO
-        mod_usuario();   // modulo usuario
-        mod_us_cadastrar(); // cadastrar usuario
-        mod_us_atualizar();  // atualizar usuario
-        mod_us_remover();  // remover usuario
-        mod_us_listar();  // listar usuario
-        mod_us_procurar();  // procurar usuario
+        //mod_usuario();   // modulo usuario
+        //mod_us_cadastrar(); // cadastrar usuario
+        //mod_us_atualizar();  // atualizar usuario
+        //mod_us_remover();  // remover usuario
+        //mod_us_listar();  // listar usuario
+        //mod_us_procurar();  // procurar usuario
         //ESTOQUE 
-        mod_estoque();  //modulo estoque
-        mod_es_cadastrar(); // cadastrar produto
-        mod_es_atualizar();
-        mod_es_remover();
-        mod_es_listar();
+        //mod_estoque();  //modulo estoque
+        //mod_es_cadastrar(); // cadastrar produto
+        //mod_es_atualizar();
+        //mod_es_remover();
+        //mod_es_listar();
         //FUNCIONARIO
-        mod_funcionario();  // modulo funcionarios
-        mod_fun_cadastrar(); // cadastrar funcionario
-        mod_fun_atualizar(); // atualizar funcionario
-        mod_fun_remover(); // remover funcionario
-        mod_fun_listar(); // listar funcionario
+        //mod_funcionario();  // modulo funcionarios
+        //mod_fun_cadastrar(); // cadastrar funcionario
+        //mod_fun_atualizar(); // atualizar funcionario
+        //mod_fun_remover(); // remover funcionario
+        //mod_fun_listar(); // listar funcionario
         //RELATORIO
-        mod_relatorio();  // modulo relatorios
-        mod_rt_listar_vendas(); 
-        mod_rt_listar_gastos();
-        mod_rt_listar_lucros();
-        tela_sobre();
-        tela_equipe();
+        //mod_relatorio();  // modulo relatorios
+        //mod_rt_listar_vendas(); 
+        //mod_rt_listar_gastos();
+        //mod_rt_listar_lucros();
+        //tela_sobre();
+        //tela_equipe();
+        
+        
     return 0;
 }
-
-
 /////
 // Funções
 //Primeira tela do programa
@@ -104,6 +124,7 @@ char tela_principal() {
     printf("///            2. Modulo Estoque                                            ///\n");
     printf("///            3. Modulo Funcionarios                                       ///\n");
     printf("///            4. Modulo Relatorios                                         ///\n");
+    printf("///            5. Equipe e sobre                                            ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -113,7 +134,7 @@ char tela_principal() {
     return perg;
     }
 // Módulo USUARIO
-void mod_usuario(void){
+char mod_usuario(){
     char perg_us;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
@@ -133,6 +154,7 @@ void mod_usuario(void){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_us);
     getchar();
+    return perg_us;
 }
 ////cadastrar usuário_1//
 void mod_us_cadastrar(void){
@@ -253,7 +275,7 @@ void mod_us_procurar(void){
 
 }
 //MODULO ESTOQUE
-void mod_estoque(void){
+char mod_estoque(){
     system("cls||clear");
     char perg_es;
     setlocale(LC_ALL,"Portuguese");
@@ -273,6 +295,7 @@ void mod_estoque(void){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_es);
     getchar();
+    return perg_es;
 
 }
 // cadastrar produto 
@@ -375,7 +398,8 @@ void mod_es_listar(void){
     system("pause");
 }
 //MODULO FUNCIONARIO
-void mod_funcionario(void){
+char mod_funcionario(){
+    char perg;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -391,7 +415,10 @@ void mod_funcionario(void){
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
+    printf("\n             O que deseja? ");
+    scanf("%c",&perg);
+    getchar();
+    perg;
 }
 //Cadastrar funcionario
 void mod_fun_cadastrar(void){
@@ -494,8 +521,9 @@ void mod_fun_listar(void){
 
 }
 //MODULO RELATORIO
-void mod_relatorio(void)
+char mod_relatorio()
 {
+    char perg;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -509,7 +537,10 @@ void mod_relatorio(void)
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
+    printf("\n             O que deseja? ");
+    scanf("%c",&perg);
+    getchar();
+    return perg;
 }
 //listar relatorio de venda
 void mod_rt_listar_vendas(void){
