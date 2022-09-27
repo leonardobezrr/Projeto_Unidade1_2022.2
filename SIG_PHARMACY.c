@@ -37,6 +37,7 @@ void mod_fun_cadastrar(void);
 void mod_fun_atualizar(void);
 void mod_fun_remover(void);
 void mod_fun_listar(void);
+void mod_fun_procurar(void);
 //mod relatorio
 void mod_relatorio(void);
 void mod_rt_listar_vendas(void);
@@ -66,6 +67,8 @@ int main(void) {
             case '5': 
             tela_equipe();
             tela_sobre();
+            break;
+            default:
             break;
             }
         }while (opcao!='0');
@@ -232,6 +235,8 @@ void mod_us_atualizar(void){
     printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
+
 }
 ////remover usuario_3///
 void mod_us_remover(void){
@@ -287,7 +292,7 @@ void mod_us_procurar(void){
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-
+    system("pause");
 }
 //MODULO ESTOQUE
 void mod_estoque(void){
@@ -467,7 +472,19 @@ void mod_funcionario(void){
     printf("\n             O que deseja? ");
     scanf("%c",&perg);
     getchar();
-    perg;
+    if (perg=='1'){
+        mod_fun_cadastrar();
+    }else if (perg == '2'){
+        mod_fun_atualizar();
+    }else if (perg == '3'){
+        mod_fun_remover();
+    }else if (perg == '4'){
+        mod_fun_procurar();
+    }else if (perg == '5'){
+        mod_fun_listar();
+    }else{
+        
+    }
 }
 //Cadastrar funcionario
 void mod_fun_cadastrar(void){
@@ -556,6 +573,25 @@ void mod_fun_remover(void){
     system("pause");
 
 }
+//Procurar funcionario 
+void mod_fun_procurar(void){
+    char email[40];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Menu Funcionario                            ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                           Procurar Funcionario                          ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("Informe o email: ");
+    scanf("%[@_.a-z0-9]",email);
+    getchar();
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    system("pause");
+}
 //Listar funcionario
 void mod_fun_listar(void){
     setlocale(LC_ALL,"Portuguese");
@@ -593,7 +629,16 @@ void mod_relatorio(void)
     printf("\n             O que deseja? ");
     scanf("%c",&perg);
     getchar();
-    system("pause");
+    if (perg=='1'){
+        mod_rt_listar_vendas();
+    }else if(perg == '2'){
+        mod_rt_listar_gastos();
+    }else if (perg=='3'){
+        mod_rt_listar_lucros();
+    }else{
+
+    }
+    
 }
 //listar relatorio de venda
 void mod_rt_listar_vendas(void){
