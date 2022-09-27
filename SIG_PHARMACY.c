@@ -18,26 +18,27 @@ char tela_principal();
 void tela_sobre(void);
 void tela_equipe(void);
 //mod usuário
-char mod_usuario();
+void mod_usuario(void);
 void mod_us_cadastrar(void);
 void mod_us_atualizar(void);
 void mod_us_remover(void);
 void mod_us_listar(void);
 void mod_us_procurar(void);
 //mod estoque 
-char mod_estoque();
+void mod_estoque(void);
 void mod_es_cadastrar(void);
 void mod_es_atualizar(void);
 void mod_es_remover(void);
 void mod_es_listar(void);
+void mod_es_procurar(void);
 //mod funcionario
-char mod_funcionario();
+void mod_funcionario(void);
 void mod_fun_cadastrar(void);
 void mod_fun_atualizar(void);
 void mod_fun_remover(void);
 void mod_fun_listar(void);
 //mod relatorio
-char mod_relatorio();
+void mod_relatorio(void);
 void mod_rt_listar_vendas(void);
 void mod_rt_listar_lucros(void);
 void mod_rt_listar_gastos(void);
@@ -134,7 +135,7 @@ char tela_principal() {
     return perg;
     }
 // Módulo USUARIO
-char mod_usuario(){
+void mod_usuario(void){
     char perg_us;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
@@ -154,7 +155,19 @@ char mod_usuario(){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_us);
     getchar();
-    return perg_us;
+    if (perg_us=='1'){
+        mod_us_cadastrar();
+    }else if (perg_us == '2'){
+        mod_us_atualizar();
+    }else if (perg_us == '3'){
+        mod_us_remover();
+    }else if (perg_us == '4'){
+        mod_us_listar();
+    }else if (perg_us == '5'){
+        mod_us_procurar();
+    }else{
+
+    }
 }
 ////cadastrar usuário_1//
 void mod_us_cadastrar(void){
@@ -235,8 +248,10 @@ void mod_us_remover(void){
     printf("Informe o email: ");
     scanf("%[@_.a-z0-9]",email);
     getchar();
+    printf("\n               Removido com sucesso!                                       \n");        
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
 
 }
 ////listar usuario_4///
@@ -275,7 +290,7 @@ void mod_us_procurar(void){
 
 }
 //MODULO ESTOQUE
-char mod_estoque(){
+void mod_estoque(void){
     system("cls||clear");
     char perg_es;
     setlocale(LC_ALL,"Portuguese");
@@ -295,7 +310,19 @@ char mod_estoque(){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_es);
     getchar();
-    return perg_es;
+    if (perg_es=='1'){
+        mod_es_cadastrar();
+    }else if (perg_es == '2'){
+        mod_es_atualizar();
+    }else if (perg_es == '3'){
+        mod_es_remover();
+    }else if (perg_es == '4'){
+        mod_es_procurar();
+    }else if (perg_es == '5'){
+        mod_es_listar();
+    }else{
+        
+    }
 
 }
 // cadastrar produto 
@@ -339,7 +366,7 @@ void mod_es_atualizar(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Menu Esqoque                                ///\n");
+    printf("///                             Menu Estoque                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///                            Atualizar Produto                            ///\n");
@@ -360,6 +387,7 @@ void mod_es_atualizar(void){
     printf("\n               Cadastrado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
 }
 //remover produto
 void mod_es_remover(void){
@@ -379,6 +407,27 @@ void mod_es_remover(void){
     printf("\n               Removido com sucesso!                                       \n");        
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
+
+}
+//procurar produtos
+void mod_es_procurar(void){
+    char cod[20];
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                              Menu Estoque                               ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                            Procurar produto                             ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    printf("Informe o codigo: ");
+    scanf("%[0-9]",cod);
+    getchar();
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    system("pause");
 
 }
 //listar produtos do estoque 
@@ -398,7 +447,7 @@ void mod_es_listar(void){
     system("pause");
 }
 //MODULO FUNCIONARIO
-char mod_funcionario(){
+void mod_funcionario(void){
     char perg;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
@@ -483,6 +532,8 @@ void mod_fun_atualizar(void){
     printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
+
 }
 //Remover funcionario
 void mod_fun_remover(void){
@@ -502,6 +553,7 @@ void mod_fun_remover(void){
     printf("\n               Removido com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
 
 }
 //Listar funcionario
@@ -518,10 +570,11 @@ void mod_fun_listar(void){
     printf("Funcionarios cadastrados:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    system("pause");
 
 }
 //MODULO RELATORIO
-char mod_relatorio()
+void mod_relatorio(void)
 {
     char perg;
     system("cls||clear");
@@ -540,7 +593,7 @@ char mod_relatorio()
     printf("\n             O que deseja? ");
     scanf("%c",&perg);
     getchar();
-    return perg;
+    system("pause");
 }
 //listar relatorio de venda
 void mod_rt_listar_vendas(void){
