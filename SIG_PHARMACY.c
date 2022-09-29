@@ -332,6 +332,7 @@ void mod_es_cadastrar(void){
     char nome[20];
     char qnt[9];
     char cod[20];
+    char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -350,6 +351,9 @@ void mod_es_cadastrar(void){
     printf("Informe o codigo: ");
     scanf ("%[0-9]",cod);
     getchar();
+    printf("Informe o valor: ");
+    scanf("%[$,.rR 0-9]",preco);
+    getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     
@@ -362,7 +366,7 @@ void mod_es_atualizar(void){
     char nome[20];
     char cod_novo[20];
     char qnt[10];
-
+    char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -383,6 +387,9 @@ void mod_es_atualizar(void){
     getchar();
     printf("Informe a quatidade: ");
     scanf("%[0-9]",qnt);
+    getchar();
+    printf("Informe o valor: ");
+    scanf("%[$,.rR 0-9]",preco);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
