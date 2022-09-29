@@ -201,9 +201,7 @@ void mod_us_cadastrar(void){
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    
-    system("pause");
-    printf("\n");
+    getchar();
 }
 ////atualizar usuario_2///
 void mod_us_atualizar(void){
@@ -234,8 +232,7 @@ void mod_us_atualizar(void){
     getchar();
     printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 
 }
 ////remover usuario_3///
@@ -255,8 +252,7 @@ void mod_us_remover(void){
     getchar();
     printf("\n               Removido com sucesso!                                       \n");        
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 
 }
 ////listar usuario_4///
@@ -292,7 +288,7 @@ void mod_us_procurar(void){
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    system("pause");
+    getchar();
 }
 //MODULO ESTOQUE
 void mod_estoque(void){
@@ -357,8 +353,7 @@ void mod_es_cadastrar(void){
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     
-    system("pause");
-    printf("\n");
+    getchar();
 
 }
 //atualizar produto 
@@ -391,8 +386,7 @@ void mod_es_atualizar(void){
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 }
 //remover produto
 void mod_es_remover(void){
@@ -411,9 +405,7 @@ void mod_es_remover(void){
     getchar();
     printf("\n               Removido com sucesso!                                       \n");        
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
-
+    getchar();
 }
 //procurar produtos
 void mod_es_procurar(void){
@@ -431,8 +423,7 @@ void mod_es_procurar(void){
     scanf("%[0-9]",cod);
     getchar();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 
 }
 //listar produtos do estoque 
@@ -448,8 +439,7 @@ void mod_es_listar(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Produtos cadastrados:");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 }
 //MODULO FUNCIONARIO
 void mod_funcionario(void){
@@ -516,8 +506,7 @@ void mod_fun_cadastrar(void){
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     
-    system("pause");
-    printf("\n");
+    getchar();
 }
 //Atualiazar funcionario 
 void mod_fun_atualizar(void){
@@ -548,8 +537,7 @@ void mod_fun_atualizar(void){
     getchar();
     printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 
 }
 //Remover funcionario
@@ -569,8 +557,7 @@ void mod_fun_remover(void){
     getchar();
     printf("\n               Removido com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 
 }
 //Procurar funcionario 
@@ -589,8 +576,7 @@ void mod_fun_procurar(void){
     scanf("%[@_.a-z0-9]",email);
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 }
 //Listar funcionario
 void mod_fun_listar(void){
@@ -605,9 +591,7 @@ void mod_fun_listar(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Funcionarios cadastrados:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
-
+    getchar();
 }
 //MODULO RELATORIO
 void mod_relatorio(void)
@@ -653,8 +637,7 @@ void mod_rt_listar_vendas(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Relatorio de vendas:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 }
 //listar gastos
 void mod_rt_listar_gastos(void){
@@ -669,8 +652,7 @@ void mod_rt_listar_gastos(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Relatorio de gastos:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 }
 //listar lucros
 void mod_rt_listar_lucros(void){
@@ -685,8 +667,7 @@ void mod_rt_listar_lucros(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Relatorio de lucros:\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    getchar();
 }
 // Tela sobre o projeto
 void tela_sobre(void) {
@@ -713,8 +694,9 @@ void tela_sobre(void) {
     printf("///  de consulta e referencia para o desenvolvidos dos demais projetos.     ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    //system("pause");
+    printf("\n\n\n\nCLique para continuar...");
+    getchar();
 }
 // Tela Equipe responsável pelo projeto
 void tela_equipe(void) {
@@ -742,6 +724,7 @@ void tela_equipe(void) {
     printf("///           Git: https://github.com/leonardobezrr/Projeto_Unidade1_2022.2 ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    system("pause");
+    //system("pause");
+    printf("\n\n\n\nCLique para continuar...");
+    getchar();
 }
