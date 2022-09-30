@@ -31,6 +31,8 @@ void mod_es_atualizar(void);
 void mod_es_remover(void);
 void mod_es_listar(void);
 void mod_es_procurar(void);
+//mod venda
+void mod_venda(void);
 //mod funcionario
 void mod_funcionario(void);
 void mod_fun_cadastrar(void);
@@ -65,42 +67,16 @@ int main(void) {
             mod_relatorio();
             break;
             case '5': 
+            mod_venda();
+            break;
+            case '6':
             tela_equipe();
             tela_sobre();
             break;
             default:
             break;
             }
-        }while (opcao!='0');
-        
-        //USUARIO
-        //mod_usuario();   // modulo usuario
-        //mod_us_cadastrar(); // cadastrar usuario
-        //mod_us_atualizar();  // atualizar usuario
-        //mod_us_remover();  // remover usuario
-        //mod_us_listar();  // listar usuario
-        //mod_us_procurar();  // procurar usuario
-        //ESTOQUE 
-        //mod_estoque();  //modulo estoque
-        //mod_es_cadastrar(); // cadastrar produto
-        //mod_es_atualizar();
-        //mod_es_remover();
-        //mod_es_listar();
-        //FUNCIONARIO
-        //mod_funcionario();  // modulo funcionarios
-        //mod_fun_cadastrar(); // cadastrar funcionario
-        //mod_fun_atualizar(); // atualizar funcionario
-        //mod_fun_remover(); // remover funcionario
-        //mod_fun_listar(); // listar funcionario
-        //RELATORIO
-        //mod_relatorio();  // modulo relatorios
-        //mod_rt_listar_vendas(); 
-        //mod_rt_listar_gastos();
-        //mod_rt_listar_lucros();
-        //tela_sobre();
-        //tela_equipe();
-        
-        
+        }while (opcao!='0');   
     return 0;
 }
 /////
@@ -128,7 +104,8 @@ char tela_principal() {
     printf("///            2. Modulo Estoque                                            ///\n");
     printf("///            3. Modulo Funcionarios                                       ///\n");
     printf("///            4. Modulo Relatorios                                         ///\n");
-    printf("///            5. Equipe e sobre                                            ///\n");
+    printf("///            5. Modulo Vendas                                             ///\n");
+    printf("///            6. Equipe e sobre                                            ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -137,7 +114,9 @@ char tela_principal() {
     getchar();
     return perg;
     }
+//
 // Módulo USUARIO
+//
 void mod_usuario(void){
     char perg_us;
     system("cls||clear");
@@ -290,7 +269,9 @@ void mod_us_procurar(void){
     printf("\n");
     getchar();
 }
+//
 //MODULO ESTOQUE
+//
 void mod_estoque(void){
     system("cls||clear");
     char perg_es;
@@ -448,7 +429,37 @@ void mod_es_listar(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+//
+//MODULO VENDA
+//
+void mod_venda(void){
+    char qnt[9];
+    char cod[20];
+    char preco[20];
+    system("cls||clear");
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n"); 
+    printf("///                               Menu Venda                                ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n  Informe o codigo do produto: ");
+    scanf("%[0-9]",cod);
+    getchar();
+    printf("    Informe a quantidade: ");
+    scanf ("%[0-9]",qnt);
+    getchar();
+    printf("    Informe o valor: ");
+    scanf("%[$,.rR 0-9]",preco);
+    getchar();
+    printf("\n\n\n       Venda feita com sucesso!");
+    getchar();
+
+}
+//
 //MODULO FUNCIONARIO
+//
 void mod_funcionario(void){
     char perg;
     system("cls||clear");
@@ -600,7 +611,9 @@ void mod_fun_listar(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+//
 //MODULO RELATORIO
+//
 void mod_relatorio(void)
 {
     char perg;
@@ -676,7 +689,9 @@ void mod_rt_listar_lucros(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+//
 // Tela sobre o projeto
+//
 void tela_sobre(void) {
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
