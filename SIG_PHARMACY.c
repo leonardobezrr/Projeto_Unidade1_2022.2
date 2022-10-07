@@ -159,6 +159,7 @@ void mod_us_cadastrar(void){
     char numero[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                             Menu Usuarios                               ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -190,6 +191,7 @@ void mod_us_atualizar(void){
     char numero[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                             Menu Usuarios                               ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -219,6 +221,7 @@ void mod_us_remover(void){
     char email[40];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -238,6 +241,7 @@ void mod_us_remover(void){
 void mod_us_listar(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -255,6 +259,7 @@ void mod_us_procurar(void){
     char email[40];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -316,6 +321,7 @@ void mod_es_cadastrar(void){
     char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                             Menu Estoque                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -350,6 +356,7 @@ void mod_es_atualizar(void){
     char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                             Menu Estoque                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -381,6 +388,7 @@ void mod_es_remover(void){
     char cod[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Usuarios                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -400,6 +408,7 @@ void mod_es_procurar(void){
     char cod[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Estoque                               ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -418,6 +427,7 @@ void mod_es_procurar(void){
 void mod_es_listar(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                              Menu Estoque                               ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -470,10 +480,7 @@ void mod_compra(void){
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Efetuar compra de produto                                 ///\n");
-    printf("///            2. Atualizar Funcionario                                     ///\n");
-    printf("///            3. Remover Funcionario                                       ///\n");
-    printf("///            4. Procurar Funcionario                                      ///\n");
-    printf("///            5. Listar Funcionarios                                       ///\n");
+    printf("///            2. Corrigir compra                                           ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -484,12 +491,6 @@ void mod_compra(void){
         mod_cp_cadastrar();
     }else if (perg == '2'){
         mod_cp_atualizar();
-    }else if (perg == '3'){
-        mod_cp_remover();
-    }else if (perg == '4'){
-        mod_cp_procurar();
-    }else if (perg == '5'){
-        mod_cp_listar();
     }else{
         
     }
@@ -502,6 +503,7 @@ void mod_cp_cadastrar(void){
     char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                             Menu Compra                                 ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -521,7 +523,7 @@ void mod_cp_cadastrar(void){
     printf("Informe o valor: ");
     scanf("%[$,.rR 0-9]",preco);
     getchar();
-    printf("\n               Cadastrado com sucesso!                                       \n");
+    printf("\n               Compra feita com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     
     getchar();
@@ -529,86 +531,33 @@ void mod_cp_cadastrar(void){
 //Atualiazar funcionario 
 void mod_cp_atualizar(void){
     char nome[20];
-    char data[9];
-    char email[40];
-    char numero[20];
+    char qnt[9];
+    char cod[20];
+    char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                            Menu Funcionario                             ///\n");
+    printf("///                            Menu Compra                                  ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///                         Atualizar Funcionario                           ///\n");
+    printf("///                          Corrigir compra                                ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
-    getchar();
-    printf("Informe seu nome: ");
+    printf("Informe o nome do produto: ");
     scanf ("%[A-Z a-z]",nome);
     getchar();
-    printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%[0-9/]",data);
+    printf("Informe a quantidade: ");
+    scanf ("%[0-9]",qnt);
     getchar();
-    printf("Telefone (99) 99999-9999: ");
-    scanf ("%[() 0-9]",numero);
+    printf("Informe o codigo: ");
+    scanf ("%[0-9]",cod);
     getchar();
-    printf("\n               Atualizado com sucesso!                                       \n");    
+    printf("Informe o valor: ");
+    scanf("%[$,.rR 0-9]",preco);
+    getchar();
+    printf("\n               Compra atualizada com sucesso!                                  \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    getchar();
-
-}
-//Remover funcionario
-void mod_cp_remover(void){
-    char email[40];
-    setlocale(LC_ALL,"Portuguese");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                              Menu Usuarios                              ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///                            Remover Usuario                              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
-    getchar();
-    printf("\n               Removido com sucesso!                                       \n");    
-    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    getchar();
-
-}
-//Procurar funcionario 
-void mod_cp_procurar(void){
-    char email[40];
-    setlocale(LC_ALL,"Portuguese");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Menu Funcionario                            ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///                           Procurar Funcionario                          ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
-    getchar();
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    getchar();
-}
-//Listar funcionario
-void mod_cp_listar(void){
-    setlocale(LC_ALL,"Portuguese");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Menu Funcionario                            ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///                           Listar Funionario                             ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("Funcionarios cadastrados:\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
 //
@@ -648,6 +597,7 @@ void mod_relatorio(void)
 void mod_rt_listar_vendas(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                           Menu Relatorio                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -663,6 +613,7 @@ void mod_rt_listar_vendas(void){
 void mod_rt_listar_gastos(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                           Menu Relatorio                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -678,6 +629,7 @@ void mod_rt_listar_gastos(void){
 void mod_rt_listar_lucros(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
+    system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                           Menu Relatorio                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
