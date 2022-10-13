@@ -33,26 +33,31 @@ int main(void) {
             switch (opcao)
             {
             case '1': 
-            mod_usuario();
-            break;
+                mod_usuario();
+                break;
             case '2': 
-            mod_estoque();
-            break;
+                mod_estoque();
+                break;
             case '3': 
-            mod_compra();
-            break;
+                mod_compra();
+                break;
             case '4': 
-            mod_relatorio();
-            break;
+                mod_relatorio();
+                break;
             case '5': 
-            mod_venda();
-            break;
+                mod_venda();
+                break;
             case '6':
-            tela_equipe();
-            tela_sobre();
-            break;
+                tela_equipe();
+                tela_sobre();
+                break;
+            case '0':
+                printf("\n\n   Voce optou por encerrar o programa!\n   Ate a proxima!");
+                break;
             default:
-            break;
+                printf("\n\n   Digite um numero valido!\n\n");
+                system("pause");
+                break;
             }
         }while (opcao!='0');   
     return 0;
