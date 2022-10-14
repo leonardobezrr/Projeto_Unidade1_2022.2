@@ -55,8 +55,8 @@ int main(void) {
                 printf("\n\n   Voce optou por encerrar o programa!\n   Ate a proxima!");
                 break;
             default:
-                printf("\n\n   Digite um numero valido!\n\n");
-                system("pause");
+                printf("\n   Digite um numero valido!");
+                getchar();
                 break;
             }
         }while (opcao!='0');   
