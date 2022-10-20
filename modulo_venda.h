@@ -18,7 +18,7 @@ void mod_venda(void){
     printf("///                               Menu Venda                                ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n  Informe o codigo do produto: ");
+    printf("    Informe o codigo do produto: ");
     scanf("%[0-9]",cod);
     getchar();
     printf("    Informe a quantidade: ");
