@@ -43,7 +43,7 @@ void mod_relatorio(void)
 }
 //listar relatorio de venda
 void mod_rt_listar_vendas(void){
-    setlocale(LC_ALL,"Portuguese");
+    setlocale(LC_ALL,"portuguese");
     printf("\n");
     system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");

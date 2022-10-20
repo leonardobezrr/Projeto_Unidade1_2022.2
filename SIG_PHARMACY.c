@@ -27,6 +27,7 @@ void tela_equipe(void);
 // Programa principal
 ////
 int main(void) {
+    setlocale(LC_ALL,"portuguese");
     char opcao;
         do {
             opcao = tela_principal();
