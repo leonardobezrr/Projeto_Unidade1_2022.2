@@ -53,7 +53,11 @@ void mod_rt_listar_vendas(void){
     printf("///                         Listar Relatorio                                ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("Relatorio de vendas:\n");
+    printf("Relatorio de vendas:\n\n");
+    printf("Codigo do produto: 25485\n");
+    printf("Nome do produto: Rivotril\n");
+    printf("Quantidade de produtos: 12\n");
+    printf("Valor Unitario do produto: 25\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
