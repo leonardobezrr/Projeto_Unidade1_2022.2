@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
+
 //mod usuário
 void mod_usuario(void);
 void mod_us_cadastrar(void);

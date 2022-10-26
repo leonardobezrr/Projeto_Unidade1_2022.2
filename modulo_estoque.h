@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
+
 //mod estoque 
 void mod_estoque(void);
 void mod_es_cadastrar(void);

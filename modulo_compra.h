@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <stdio.h>
+#include <string.h>
+
 //mod compra
 void mod_compra(void);
 void mod_cp_cadastrar(void);
