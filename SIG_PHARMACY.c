@@ -17,7 +17,6 @@
 #include "modulo_venda.h"
 #include "modulo_compra.h"
 #include "modulo_relatorio.h"
-#include "modulo_validacao.h"
 ////////
 // Assinatura das funções
 ////////
