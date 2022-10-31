@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
-
+#include "modulo_validacao.h"
 //mod usuário
 void mod_usuario(void);
 void mod_us_cadastrar(void);
