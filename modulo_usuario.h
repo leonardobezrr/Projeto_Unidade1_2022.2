@@ -10,9 +10,18 @@ void mod_us_atualizar(void);
 void mod_us_remover(void);
 void mod_us_listar(void);
 void mod_us_procurar(void);
+
+struct usuario {
+  char nome[31];
+  char data[21];
+  char email[41];
+  char numero[21];
+};
+
 //
 // Módulo USUARIO
 //
+
 void mod_usuario(void){
     char perg_us;
     system("cls||clear");
@@ -49,10 +58,7 @@ void mod_usuario(void){
 }
 ////cadastrar usuário_1//
 void mod_us_cadastrar(void){
-    char nome[20];
-    char data[11];
-    char email[40];
-    char numero[20];
+    struct usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -64,16 +70,16 @@ void mod_us_cadastrar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe seu nome: ");
-    scanf ("%[A-Z a-z]",nome);
+    scanf ("%30[A-Z a-z]",primeiro.nome);
     getchar();
     printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%[0-9/]",data);
+    scanf ("%20[0-9/]",primeiro.data);
     getchar();
     printf("Email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%40[@_.a-z0-9]",primeiro.email);
     getchar();
     printf("Telefone (99) 99999-9999: ");
-    scanf ("%[() 0-9]",numero);
+    scanf ("%20[() 0-9]",primeiro.numero);
     getchar();
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -135,6 +141,7 @@ void mod_us_remover(void){
 }
 ////listar usuario_4///
 void mod_us_listar(void){
+    struct usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -145,7 +152,11 @@ void mod_us_listar(void){
     printf("///                             Listar Usuarios                             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("Usuarios cadastrados:\n");
+    printf("\nUsuario Cadastrado:\n");
+    printf("Nome: %c\n", primeiro.nome);
+    printf("Email: %c\n", primeiro.email);
+    printf("Data de nascimento: %c\n", primeiro.data);
+    printf("Telefone: %c\n", primeiro.numero);
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     system("pause");
