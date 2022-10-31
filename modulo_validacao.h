@@ -7,6 +7,7 @@
 int bissexto(int ano);
 int data_int(int dia, int mes, int ano);
 int data_char(char data[]);
+int email_validacao(char email[]);
 
 int meses_int[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 //// Validações baseadas no código de Vinicius Maia e do professor Flavius Gorgônio
@@ -68,5 +69,33 @@ int data_char(char data[]){
         return 1;
     }
 
+    return 0;
+}
+
+int email_validacao(char email[]){
+
+    int arroba = 0, ponto = 0;
+
+    if (strlen(email) > 0){
+        for(int i = 0; i < strlen(email); i++){
+            
+            if(email[i] == '@'){
+                arroba ++;
+            }
+
+            else if(email[i] == '.'){
+                ponto++;
+
+            }
+        }
+
+        if(arroba == 1 && ponto!= 0){
+            return 1;
+        }
+
+        else{
+            return 0;
+        }
+    }
     return 0;
 }
