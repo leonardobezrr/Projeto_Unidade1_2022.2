@@ -87,10 +87,7 @@ void mod_us_cadastrar(void){
 }
 ////atualizar usuario_2///
 void mod_us_atualizar(void){
-    char nome[20];
-    char data[11];
-    char email[40];
-    char numero[20];
+    struct usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -102,16 +99,16 @@ void mod_us_atualizar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%[@_.a-z0-9]",primeiro.email);
     getchar();
     printf("Informe seu nome: ");
-    scanf ("%[A-Z a-z]",nome);
+    scanf ("%[A-Z a-z]",primeiro.nome);
     getchar();
     printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%[0-9/]",data);
+    scanf ("%[0-9/]",primeiro.data);
     getchar();
     printf("Telefone (99) 99999-9999: ");
-    scanf ("%[() 0-9]",numero);
+    scanf ("%[() 0-9]",primeiro.numero);
     getchar();
     printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -120,7 +117,7 @@ void mod_us_atualizar(void){
 }
 ////remover usuario_3///
 void mod_us_remover(void){
-    char email[40];
+    struct usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -132,7 +129,7 @@ void mod_us_remover(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%[@_.a-z0-9]",primeiro.email);
     getchar();
     printf("\n               Removido com sucesso!                                       \n");        
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -163,7 +160,7 @@ void mod_us_listar(void){
 }
 ////procurar usuario_5///
 void mod_us_procurar(void){
-    char email[40];
+    struct usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -175,7 +172,7 @@ void mod_us_procurar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",email);
+    scanf("%[@_.a-z0-9]",primeiro.email);
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
