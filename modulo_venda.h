@@ -7,10 +7,15 @@ void mod_venda(void);
 //
 //MODULO VENDA
 //
+struct venda {
+  char cod[21];
+  char qnt[11];
+  char preco[21];
+};
+
+
 void mod_venda(void){
-    char qnt[9];
-    char cod[20];
-    char preco[20];
+    struct venda primeiro;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -20,13 +25,13 @@ void mod_venda(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("    Informe o codigo do produto: ");
-    scanf("%[0-9]",cod);
+    scanf("%[0-9]",primeiro.cod);
     getchar();
     printf("    Informe a quantidade: ");
-    scanf ("%[0-9]",qnt);
+    scanf ("%[0-9]",primeiro.qnt);
     getchar();
     printf("    Informe o valor: ");
-    scanf("%[$,.rR 0-9]",preco);
+    scanf("%[$,.rR 0-9]",primeiro.preco);
     getchar();
     printf("\n\n\n       Venda feita com sucesso!");
     getchar();
