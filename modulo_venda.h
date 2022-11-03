@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <stdio.h>
 #include <string.h>
+typedef struct venda Venda;
 //mod venda
 void mod_venda(void);
 //
@@ -15,7 +16,7 @@ struct venda {
 
 
 void mod_venda(void){
-    struct venda primeiro;
+    Venda* primeiro;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -24,14 +25,15 @@ void mod_venda(void){
     printf("///                               Menu Venda                                ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    primeiro = (Venda*) malloc(sizeof(Venda));
     printf("    Informe o codigo do produto: ");
-    scanf("%[0-9]",primeiro.cod);
+    scanf("%20[^\n]",primeiro->cod);
     getchar();
     printf("    Informe a quantidade: ");
-    scanf ("%[0-9]",primeiro.qnt);
+    scanf ("%10[^\n]",primeiro->qnt);
     getchar();
     printf("    Informe o valor: ");
-    scanf("%[$,.rR 0-9]",primeiro.preco);
+    scanf("%20[^\n]",primeiro->preco);
     getchar();
     printf("\n\n\n       Venda feita com sucesso!");
     getchar();
