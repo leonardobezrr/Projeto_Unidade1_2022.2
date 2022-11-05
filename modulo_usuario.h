@@ -11,6 +11,7 @@ struct usuario {
   char data[21];
   char email[41];
   char numero[21];
+  char status;
 };
 //mod usuário
 void mod_usuario(void);
@@ -19,8 +20,9 @@ void mod_us_atualizar(void);
 void mod_us_remover(void);
 void mod_us_listar();
 void mod_us_procurar(void);
-void exibe_lista(Usuario*);
-
+void exibe_lista();
+void grava_user(Usuario*);
+void exibe_usuario(Usuario*);
 
 
 //
@@ -87,11 +89,25 @@ void mod_us_cadastrar(void){
     printf("Telefone (99) 99999-9999: ");
     scanf ("%20[^\n]",primeiro->numero);
     getchar();
+    primeiro->status = 'C';
     free(primeiro);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+//Gravar no arquivo 
+void grava_user(Usuario* aln){
+    FILE* fp;
+    fp = fopen("user.dat","ab");
+    if (fp == NULL){
+        printf("Ops!Ocorreu um erro na abertura do arquivo!\n");
+        printf("Nao foi possivel continuar este programa...\n ");
+    }
+    fwrite(aln,sizeof(Usuario),1,fp);
+    fclose(fp);
+}
+//exibir
+
 ////atualizar usuario_2///
 void mod_us_atualizar(void){
     Usuario* primeiro;
@@ -147,7 +163,6 @@ void mod_us_remover(void){
 }
 ////listar usuario_4///
 void mod_us_listar(){
-    Usuario* primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -158,21 +173,52 @@ void mod_us_listar(){
     printf("///                             Listar Usuarios                             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    primeiro = (Usuario*) malloc(sizeof(Usuario));
-    printf("\nUsuario Cadastrado:\n");
-    exibe_lista(primeiro);
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\nUsuarios Cadastrados:\n");
+    exibe_lista();
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     system("pause");
-    free(primeiro);
+}
+//exibindo usuarios
+void exibe_usuario(Usuario* al) {
+  char situacao[20];
+  if ((al == NULL) || (al->status == 'x')) {
+    printf("\n---Usuario Inexistente---\n");
+  } else {
+    printf("Nome do Usuario: %s\n", al->nome);
+    printf("Email: %s\n", al->email);
+    printf("Data: %s\n", al->data);
+    printf("Telefone: %s\n", al->numero);
+    if (al->status == 'C') {
+      strcpy(situacao, "Cadastrado");
+    } else if (al->status == 't') {
+      strcpy(situacao, "Trancado");
+    } else {
+      strcpy(situacao, "Não informada");
+    }
+    printf("Situação do Usuario: %s\n", situacao);
+  }
 }
 /// Exibe lista de usuários//
-void exibe_lista(Usuario* primeiro){
-    printf("Nome: %s\n", primeiro->nome);
-    printf("Email: %s\n", primeiro->email);
-    printf("Data de nascimento: %s\n", primeiro->data);
-    printf("Telefone: %s\n", primeiro->numero);
+void exibe_lista(){
+  FILE* fp;
+  Usuario* aln;
+  aln = (Usuario*) malloc(sizeof(Usuario));
+  fp = fopen("user.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tivemos que encerrar o programa...\n");
+    exit(1);
+  }
+  while(fread(aln, sizeof(Usuario), 1, fp)) {
+    if (aln->status != 'x') {
+      exibe_usuario(aln);
+    }
+  }
+  fclose(fp);
+  free(aln);
 }
+
 ////procurar usuario_5///
 void mod_us_procurar(void){
     Usuario* primeiro;
