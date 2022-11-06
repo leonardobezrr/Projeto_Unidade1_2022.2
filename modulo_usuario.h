@@ -190,13 +190,13 @@ void exibe_usuario(Usuario* al) {
     printf("Data: %s\n", al->data);
     printf("Telefone: %s\n", al->numero);
     if (al->status == 'C') {
-      strcpy(situacao, "Cadastrado");
+      strcpy(situacao, "Cadastrado\n");
     } else if (al->status == 't') {
-      strcpy(situacao, "Trancado");
+      strcpy(situacao, "Trancado\n");
     } else {
-      strcpy(situacao, "Não informada");
+      strcpy(situacao, "Não informada\n");
     }
-    printf("Situação do Usuario: %s\n", situacao);
+    printf("Situação do Usuario: %s\n\n\n", situacao);
   }
 }
 /// Exibe lista de usuários//
