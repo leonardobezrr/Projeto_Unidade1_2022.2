@@ -35,6 +35,8 @@ int main(void) {
     Estoque* prod;
     prod = (Estoque*) malloc(sizeof(Estoque));
     
+    Compra* comp;
+    comp = (Compra*) malloc(sizeof(Compra));
     char opcao;
         do {
             opcao = tela_principal();
@@ -48,10 +50,12 @@ int main(void) {
             case '2': 
                 mod_estoque();
                 grava_prod(prod);
-                free(primeiro);
+                free(prod);
                 break;
             case '3': 
                 mod_compra();
+                grava_comp(comp);
+                free(comp);
                 break;
             case '4': 
                 mod_relatorio();
