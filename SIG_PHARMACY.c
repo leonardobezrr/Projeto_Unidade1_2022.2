@@ -28,9 +28,12 @@ void tela_equipe(void);
 ////
 int main(void) {
     setlocale(LC_ALL,"portuguese");
+    
     Usuario* primeiro;
     primeiro = (Usuario*) malloc(sizeof(Usuario));
 
+    Estoque* prod;
+    prod = (Estoque*) malloc(sizeof(Estoque));
     char opcao;
         do {
             opcao = tela_principal();
@@ -43,6 +46,8 @@ int main(void) {
                 break;
             case '2': 
                 mod_estoque();
+                grava_prod(prod);
+                free(primeiro);
                 break;
             case '3': 
                 mod_compra();

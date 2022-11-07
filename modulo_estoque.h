@@ -21,6 +21,7 @@ void mod_es_atualizar(void);
 void mod_es_remover(void);
 void mod_es_listar(void);
 void mod_es_procurar(void);
+void grava_prod(Estoque*);
 //
 //MODULO ESTOQUE
 //
@@ -64,37 +65,49 @@ void mod_estoque(void){
 // cadastrar produto 
 void mod_es_cadastrar(void){
 
-    Estoque* primeiro;
+    Estoque* prod;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Menu Estoques                               ///\n");
+    printf("///                             Menu Estoque                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///                           Cadastrar produto                             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    primeiro = (Estoque*) malloc(sizeof(Estoque));
+    prod = (Estoque*) malloc(sizeof(Estoque));
     printf("Informe o nome do produto: ");
-    scanf ("%20[^\n]",primeiro->nome);
+    scanf ("%20[^\n]",prod->nome);
     getchar();
     printf("Quantidade: ");
-    scanf ("%10[^\n]",primeiro->qnt);
+    scanf ("%10[^\n]",prod->qnt);
     getchar();
     printf("Codigo do produto: ");
-    scanf("%20[^\n]",primeiro->cod);
+    scanf("%20[^\n]",prod->cod);
     getchar();
     printf("Valor: ");
-    scanf ("%20[^\n]",primeiro->preco);
+    scanf ("%20[^\n]",prod->preco);
     getchar();
-    primeiro->status = 'C';
-    free(primeiro);
+    prod->status = 'C';
+    free(prod);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 
 }
+//gravar produto
+void grava_prod(Estoque* prod){
+    FILE* fp;
+    fp = fopen("produto.dat","ab");
+    if (fp == NULL){
+        printf("Ops!Ocorreu um erro na abertura do arquivo!\n");
+        printf("Nao foi possivel continuar este programa...\n ");
+    }
+    fwrite(prod,sizeof(Estoque),1,fp);
+    fclose(fp);
+}
+
 //atualizar produto 
 void mod_es_atualizar(void){
     char cod[20];
