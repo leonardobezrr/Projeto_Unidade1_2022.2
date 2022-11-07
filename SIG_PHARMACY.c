@@ -29,6 +29,8 @@ void tela_equipe(void);
 int main(void) {
     setlocale(LC_ALL,"portuguese");
     Usuario* primeiro;
+    primeiro = (Usuario*) malloc(sizeof(Usuario));
+
     char opcao;
         do {
             opcao = tela_principal();
@@ -37,6 +39,7 @@ int main(void) {
             case '1': 
                 mod_usuario();
                 grava_user(primeiro);
+                free(primeiro);
                 break;
             case '2': 
                 mod_estoque();

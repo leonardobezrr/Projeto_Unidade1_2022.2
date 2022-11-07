@@ -3,6 +3,17 @@
 #include <locale.h>
 #include <string.h>
 
+//struct
+typedef struct estoque Estoque;
+
+struct estoque
+{
+    char nome[21];
+    char qnt[11];
+    char cod[21];
+    char preco[21];
+    char status;
+};
 //mod estoque 
 void mod_estoque(void);
 void mod_es_cadastrar(void);
@@ -48,38 +59,39 @@ void mod_estoque(void){
     }
 
 }
+
+
 // cadastrar produto 
 void mod_es_cadastrar(void){
-    
-    char nome[20];
-    char qnt[9];
-    char cod[20];
-    char preco[20];
+
+    Estoque* primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                             Menu Estoque                                ///\n");
+    printf("///                             Menu Estoques                               ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///                           Cadastrar Produto                             ///\n");
+    printf("///                           Cadastrar produto                             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
+    primeiro = (Estoque*) malloc(sizeof(Estoque));
     printf("Informe o nome do produto: ");
-    scanf ("%[A-Z a-z]",nome);
+    scanf ("%20[^\n]",primeiro->nome);
     getchar();
-    printf("Informe a quantidade: ");
-    scanf ("%[0-9]",qnt);
+    printf("Quantidade: ");
+    scanf ("%10[^\n]",primeiro->qnt);
     getchar();
-    printf("Informe o codigo: ");
-    scanf ("%[0-9]",cod);
+    printf("Codigo do produto: ");
+    scanf("%20[^\n]",primeiro->cod);
     getchar();
-    printf("Informe o valor: ");
-    scanf("%[$,.rR 0-9]",preco);
+    printf("Valor: ");
+    scanf ("%20[^\n]",primeiro->preco);
     getchar();
+    primeiro->status = 'C';
+    free(primeiro);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    
     getchar();
 
 }
@@ -115,7 +127,7 @@ void mod_es_atualizar(void){
     printf("Informe o valor: ");
     scanf("%[$,.rR 0-9]",preco);
     getchar();
-    printf("\n               Cadastrado com sucesso!                                       \n");    
+    printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }

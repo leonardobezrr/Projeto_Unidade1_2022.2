@@ -96,14 +96,14 @@ void mod_us_cadastrar(void){
     getchar();
 }
 //Gravar no arquivo 
-void grava_user(Usuario* aln){
+void grava_user(Usuario* primeiro){
     FILE* fp;
     fp = fopen("user.dat","ab");
     if (fp == NULL){
         printf("Ops!Ocorreu um erro na abertura do arquivo!\n");
         printf("Nao foi possivel continuar este programa...\n ");
     }
-    fwrite(aln,sizeof(Usuario),1,fp);
+    fwrite(primeiro,sizeof(Usuario),1,fp);
     fclose(fp);
 }
 //exibir
@@ -185,7 +185,7 @@ void exibe_usuario(Usuario* al) {
   if ((al == NULL) || (al->status == 'x')) {
     printf("\n---Usuario Inexistente---\n");
   } else {
-    printf("Nome do Usuario: %s\n", al->nome);
+    printf("\nNome do Usuario: %s\n", al->nome);
     printf("Email: %s\n", al->email);
     printf("Data: %s\n", al->data);
     printf("Telefone: %s\n", al->numero);
@@ -194,9 +194,9 @@ void exibe_usuario(Usuario* al) {
     } else if (al->status == 't') {
       strcpy(situacao, "Trancado\n");
     } else {
-      strcpy(situacao, "Não informada\n");
+      strcpy(situacao, "Sem dados\n");
     }
-    printf("Situação do Usuario: %s\n\n\n", situacao);
+    printf("Status do Usuario: %s\n", situacao);
   }
 }
 /// Exibe lista de usuários//
