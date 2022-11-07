@@ -28,12 +28,13 @@ void tela_equipe(void);
 ////
 int main(void) {
     setlocale(LC_ALL,"portuguese");
-    
+
     Usuario* primeiro;
     primeiro = (Usuario*) malloc(sizeof(Usuario));
 
     Estoque* prod;
     prod = (Estoque*) malloc(sizeof(Estoque));
+    
     char opcao;
         do {
             opcao = tela_principal();
