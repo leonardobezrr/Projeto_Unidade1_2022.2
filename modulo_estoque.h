@@ -22,6 +22,8 @@ void mod_es_remover(void);
 void mod_es_listar(void);
 void mod_es_procurar(void);
 void grava_prod(Estoque*);
+void exibe_lista_es();
+void exibe_estoque(Estoque*);
 //
 //MODULO ESTOQUE
 //
@@ -184,6 +186,46 @@ void mod_es_procurar(void){
     getchar();
 
 }
+//exibe produtos
+void exibe_estoque(Estoque* al) {
+  char situacao[20];
+  if ((al == NULL) || (al->status == 'x')) {
+    printf("\n---Prodto Inexistente---\n");
+  } else {
+    printf("\nNome do Produto: %s\n", al->nome);
+    printf("Quantidade: %s\n", al->qnt);
+    printf("Codigo do Produto: %s\n", al->cod);
+    printf("Valor: %s\n", al->preco);
+    if (al->status == 'C') {
+      strcpy(situacao, "Cadastrado\n");
+    } else if (al->status == 't') {
+      strcpy(situacao, "Trancado\n");
+    } else {
+      strcpy(situacao, "Sem dados\n");
+    }
+    printf("Status do Produto: %s\n", situacao);
+  }
+}
+//exibir lista
+void exibe_lista_es(){
+  FILE* fp;
+  Estoque* aln;
+  aln = (Estoque*) malloc(sizeof(Estoque));
+  fp = fopen("produto.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tivemos que encerrar o programa...\n");
+    exit(1);
+  }
+  while(fread(aln, sizeof(Estoque), 1, fp)) {
+    if (aln->status != 'x') {
+      exibe_estoque(aln);
+    }
+  }
+  fclose(fp);
+  free(aln);
+}
+
 //listar produtos do estoque 
 void mod_es_listar(void){
     setlocale(LC_ALL,"Portuguese");
@@ -197,6 +239,7 @@ void mod_es_listar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Produtos cadastrados:");
+    exibe_lista_es();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
