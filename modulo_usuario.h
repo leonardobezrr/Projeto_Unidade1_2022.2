@@ -31,6 +31,8 @@ void exibe_usuario(Usuario*);
 
 void mod_usuario(void){
     char perg_us;
+    Usuario* primeiro;
+    primeiro = (Usuario*) malloc(sizeof(Usuario));
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -51,6 +53,8 @@ void mod_usuario(void){
     getchar();
     if (perg_us=='1'){
         mod_us_cadastrar();
+        grava_user(primeiro);
+        free(primeiro);
     }else if (perg_us == '2'){
         mod_us_atualizar();
     }else if (perg_us == '3'){
