@@ -35,7 +35,8 @@ void mod_venda(void){
     printf("    Informe o valor: ");
     scanf("%20[^\n]",primeiro->preco);
     getchar();
-    printf("\n\n\n       Venda feita com sucesso!");
+    printf("\n\n\n       Venda feita com sucesso!\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 
 }

@@ -29,6 +29,7 @@ void exibe_estoque(Estoque*);
 //
 void mod_estoque(void){
     system("cls||clear");
+    Estoque* prod;
     char perg_es;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -47,8 +48,11 @@ void mod_estoque(void){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_es);
     getchar();
+    prod = (Estoque*) malloc(sizeof(Estoque));
     if (perg_es=='1'){
         mod_es_cadastrar();
+        grava_prod(prod);
+        free(prod);
     }else if (perg_es == '2'){
         mod_es_atualizar();
     }else if (perg_es == '3'){
@@ -66,7 +70,6 @@ void mod_estoque(void){
 
 // cadastrar produto 
 void mod_es_cadastrar(void){
-
     Estoque* prod;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");

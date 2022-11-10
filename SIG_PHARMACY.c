@@ -29,13 +29,8 @@ void tela_equipe(void);
 int main(void) {
     setlocale(LC_ALL,"portuguese");
 
-    
-
-    Estoque* prod;
-    prod = (Estoque*) malloc(sizeof(Estoque));
-    
-    Compra* comp;
-    comp = (Compra*) malloc(sizeof(Compra));
+    //Compra* comp;
+    //comp = (Compra*) malloc(sizeof(Compra));
     char opcao;
         do {
             opcao = tela_principal();
@@ -46,21 +41,19 @@ int main(void) {
                 break;
             case '2': 
                 mod_estoque();
-                grava_prod(prod);
-                free(prod);
                 break;
+            //case '3': 
+                //mod_compra();
+                //grava_comp(comp);
+                //free(comp);
+                //break;
             case '3': 
-                mod_compra();
-                grava_comp(comp);
-                free(comp);
-                break;
-            case '4': 
                 mod_relatorio();
                 break;
-            case '5': 
+            case '4': 
                 mod_venda();
                 break;
-            case '6':
+            case '5':
                 tela_equipe();
                 tela_sobre();
                 break;
@@ -99,10 +92,9 @@ char tela_principal() {
     printf("///                                                                         ///\n");
     printf("///            1. Modulo Usuarios                                           ///\n");
     printf("///            2. Modulo Estoque                                            ///\n");
-    printf("///            3. Modulo Compra                                             ///\n");
-    printf("///            4. Modulo Relatorios                                         ///\n");
-    printf("///            5. Modulo Vendas                                             ///\n");
-    printf("///            6. Equipe e sobre                                            ///\n");
+    printf("///            3. Modulo Relatorios                                         ///\n");
+    printf("///            4. Modulo Vendas                                             ///\n");
+    printf("///            5. Equipe e sobre                                            ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
