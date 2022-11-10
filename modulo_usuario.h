@@ -67,7 +67,9 @@ void mod_usuario(void){
 
     }
 }
-////cadastrar usuário_1//
+//
+////CADASTRAR USUARIO//
+//
 void mod_us_cadastrar(void){
     Usuario* primeiro;
     setlocale(LC_ALL,"Portuguese");
@@ -99,7 +101,7 @@ void mod_us_cadastrar(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
-//Gravar no arquivo 
+//GRAVAR DADO NO ARQUIVO 
 void grava_user(Usuario* primeiro){
     FILE* fp;
     fp = fopen("user.dat","ab");
@@ -110,9 +112,29 @@ void grava_user(Usuario* primeiro){
     fwrite(primeiro,sizeof(Usuario),1,fp);
     fclose(fp);
 }
-//exibir
-
-////atualizar usuario_2///
+//EXIBE USUARIO
+void exibe_usuario(Usuario* al) {
+  char situacao[20];
+  if ((al == NULL) || (al->status == 'x')) {
+    printf("\n---Usuario Inexistente---\n");
+  } else {
+    printf("\nNome do Usuario: %s\n", al->nome);
+    printf("Email: %s\n", al->email);
+    printf("Data: %s\n", al->data);
+    printf("Telefone: %s\n", al->numero);
+    if (al->status == 'C') {
+      strcpy(situacao, "Cadastrado\n");
+    } else if (al->status == 't') {
+      strcpy(situacao, "Trancado\n");
+    } else {
+      strcpy(situacao, "Sem dados\n");
+    }
+    printf("Status do Usuario: %s\n", situacao);
+  }
+}
+//
+////ATUALIZAR USUARIO//
+//
 void mod_us_atualizar(void){
     Usuario* primeiro;
     setlocale(LC_ALL,"Portuguese");
@@ -144,7 +166,9 @@ void mod_us_atualizar(void){
     getchar();
 
 }
-////remover usuario_3///
+//
+////REMOVER USUARIO//
+//
 void mod_us_remover(void){
     Usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
@@ -165,7 +189,9 @@ void mod_us_remover(void){
     getchar();
 
 }
-////listar usuario_4///
+//
+////LISTAR USUARIOS//
+//
 void mod_us_listar(){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -183,27 +209,7 @@ void mod_us_listar(){
     printf("\n");
     system("pause");
 }
-//exibindo usuarios
-void exibe_usuario(Usuario* al) {
-  char situacao[20];
-  if ((al == NULL) || (al->status == 'x')) {
-    printf("\n---Usuario Inexistente---\n");
-  } else {
-    printf("\nNome do Usuario: %s\n", al->nome);
-    printf("Email: %s\n", al->email);
-    printf("Data: %s\n", al->data);
-    printf("Telefone: %s\n", al->numero);
-    if (al->status == 'C') {
-      strcpy(situacao, "Cadastrado\n");
-    } else if (al->status == 't') {
-      strcpy(situacao, "Trancado\n");
-    } else {
-      strcpy(situacao, "Sem dados\n");
-    }
-    printf("Status do Usuario: %s\n", situacao);
-  }
-}
-/// Exibe lista de usuários//
+//LISTA USUARIO
 void exibe_lista(){
   FILE* fp;
   Usuario* aln;
@@ -222,8 +228,9 @@ void exibe_lista(){
   fclose(fp);
   free(aln);
 }
-
-////procurar usuario_5///
+//
+////PROCURAR USUARIOS//
+//
 void mod_us_procurar(void){
     Usuario* primeiro;
     setlocale(LC_ALL,"Portuguese");
