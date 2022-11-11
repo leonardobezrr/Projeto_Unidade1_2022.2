@@ -11,6 +11,7 @@ struct usuario {
   char data[21];
   char email[41];
   char numero[21];
+  char cpf[21];
   char status;
 };
 //mod usuário
@@ -93,6 +94,10 @@ Usuario* mod_us_cadastrar(void){
     printf("Telefone (99) 99999-9999: ");
     scanf ("%20[^\n]",primeiro->numero);
     getchar();
+    printf("CPF: ");
+    scanf("%20[^\n]",primeiro->cpf);
+    getchar();
+
     primeiro->status = 'C';
     free(primeiro);
     printf("\n               Cadastrado com sucesso!                                       \n");
@@ -125,6 +130,7 @@ void exibe_usuario(Usuario* al) {
     printf("Email: %s\n", al->email);
     printf("Data: %s\n", al->data);
     printf("Telefone: %s\n", al->numero);
+    printf("CPF: %s\n",al->cpf);
     if (al->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
     } else if (al->status == 't') {
@@ -176,17 +182,21 @@ void mod_us_atualizar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");  
     primeiro = (Usuario*) malloc(sizeof(Usuario)); 
+    printf("Informe o CPF do usuario que deseja atualizar: ");
+    scanf("%20[^\n]",primeiro->cpf);
+    getchar();
+    printf("\n - Agora digite os novos dados - \n\n");
     printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",primeiro->email);
+    scanf("%40[^\n]",primeiro->email);
     getchar();
     printf("Informe seu nome: ");
-    scanf ("%[A-Z a-z]",primeiro->nome);
+    scanf ("%30[^\n]",primeiro->nome);
     getchar();
     printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%[0-9/]",primeiro->data);
+    scanf ("%20[^\n]",primeiro->data);
     getchar();
     printf("Telefone (99) 99999-9999: ");
-    scanf ("%[() 0-9]",primeiro->numero);
+    scanf ("%20[^\n]",primeiro->numero);
     getchar();
     free(primeiro);
     printf("\n               Atualizado com sucesso!                                       \n");    
@@ -253,8 +263,8 @@ void mod_us_procurar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     primeiro = (Usuario*) malloc(sizeof(Usuario));
-    printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",primeiro->email);
+    printf("Informe o cpf: ");
+    scanf("%20[^\n]",primeiro->cpf);
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");

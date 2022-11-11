@@ -26,13 +26,13 @@ void mod_venda(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     primeiro = (Venda*) malloc(sizeof(Venda));
-    printf("    Informe o codigo do produto: ");
+    printf("\nInforme o codigo do produto: ");
     scanf("%20[^\n]",primeiro->cod);
     getchar();
-    printf("    Informe a quantidade: ");
+    printf("Informe a quantidade: ");
     scanf ("%10[^\n]",primeiro->qnt);
     getchar();
-    printf("    Informe o valor: ");
+    printf("Informe o valor: ");
     scanf("%20[^\n]",primeiro->preco);
     getchar();
     printf("\n\n\n       Venda feita com sucesso!\n");

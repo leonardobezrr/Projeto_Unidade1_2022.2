@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 //mod relatorio
 void mod_relatorio(void);
 void mod_rt_listar_vendas(void);
