@@ -15,12 +15,12 @@ struct usuario {
 };
 //mod usuário
 void mod_usuario(void);
-void mod_us_cadastrar(void);
+Usuario* mod_us_cadastrar(void);
 void mod_us_atualizar(void);
 void mod_us_remover(void);
 void mod_us_listar();
 void mod_us_procurar(void);
-void exibe_lista();
+void listar_user(void);
 void grava_user(Usuario*);
 void exibe_usuario(Usuario*);
 
@@ -28,11 +28,9 @@ void exibe_usuario(Usuario*);
 //
 // Módulo USUARIO
 //
-
 void mod_usuario(void){
     char perg_us;
     Usuario* primeiro;
-    primeiro = (Usuario*) malloc(sizeof(Usuario));
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -52,7 +50,7 @@ void mod_usuario(void){
     scanf("%c",&perg_us);
     getchar();
     if (perg_us=='1'){
-        mod_us_cadastrar();
+        primeiro = mod_us_cadastrar();
         grava_user(primeiro);
         free(primeiro);
     }else if (perg_us == '2'){
@@ -68,9 +66,9 @@ void mod_usuario(void){
     }
 }
 //
-////CADASTRAR USUARIO//
+////CADASTRAR USUARIO
 //
-void mod_us_cadastrar(void){
+Usuario* mod_us_cadastrar(void){
     Usuario* primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -100,8 +98,11 @@ void mod_us_cadastrar(void){
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
+    return primeiro;
 }
+//
 //GRAVAR DADO NO ARQUIVO 
+//
 void grava_user(Usuario* primeiro){
     FILE* fp;
     fp = fopen("user.dat","ab");
@@ -112,7 +113,9 @@ void grava_user(Usuario* primeiro){
     fwrite(primeiro,sizeof(Usuario),1,fp);
     fclose(fp);
 }
+//
 //EXIBE USUARIO
+//
 void exibe_usuario(Usuario* al) {
   char situacao[20];
   if ((al == NULL) || (al->status == 'x')) {
@@ -131,6 +134,31 @@ void exibe_usuario(Usuario* al) {
     }
     printf("Status do Usuario: %s\n", situacao);
   }
+}
+//
+//LISTA USUARIO
+//
+void listar_user(void){
+  FILE* fp;
+  Usuario* aln;
+  int achou;
+  achou = 0;
+  aln = (Usuario*) malloc(sizeof(Usuario));
+  fp = fopen("user.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tivemos que encerrar o programa...\n");
+    exit(1);
+  }
+  while(fread(aln, sizeof(Usuario), 1, fp)) {
+    if (aln->status != 'x') {
+      achou += 1;
+      printf ("\n  - Usuario %d - \n",achou);
+      exibe_usuario(aln);
+    }
+  }
+  fclose(fp);
+  free(aln);
 }
 //
 ////ATUALIZAR USUARIO//
@@ -204,29 +232,10 @@ void mod_us_listar(){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\nUsuarios Cadastrados:\n");
-    exibe_lista();
+    listar_user();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     system("pause");
-}
-//LISTA USUARIO
-void exibe_lista(){
-  FILE* fp;
-  Usuario* aln;
-  aln = (Usuario*) malloc(sizeof(Usuario));
-  fp = fopen("user.dat", "rb");
-  if (fp == NULL) {
-    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Tivemos que encerrar o programa...\n");
-    exit(1);
-  }
-  while(fread(aln, sizeof(Usuario), 1, fp)) {
-    if (aln->status != 'x') {
-      exibe_usuario(aln);
-    }
-  }
-  fclose(fp);
-  free(aln);
 }
 //
 ////PROCURAR USUARIOS//

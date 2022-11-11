@@ -59,7 +59,7 @@ void mod_rt_listar_vendas(void){
     printf("Codigo do produto: 25485\n");
     printf("Nome do produto: Rivotril\n");
     printf("Quantidade de produtos: 12\n");
-    printf("Valor Unitario do produto: 25\n");
+    printf("Valor Unitario do produto: 25\n\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
