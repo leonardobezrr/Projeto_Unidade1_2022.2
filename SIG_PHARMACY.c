@@ -68,10 +68,10 @@ int main(void) {
         }while (opcao!='0');   
     return 0;
 }
-/////
-// Funções
+
+// 
 //Primeira tela do programa
-/////
+//
 char tela_principal() {
     system("cls||clear");
     char perg;
@@ -104,7 +104,7 @@ char tela_principal() {
     return perg;
     }
 //
-// Tela sobre o projeto
+//Tela sobre o projeto
 //
 void tela_sobre(void) {
     system("cls||clear");
@@ -134,7 +134,9 @@ void tela_sobre(void) {
     printf("\n\n\n\nCLique para continuar...");
     getchar();
 }
-// Tela Equipe responsável pelo projeto
+//
+//Tela Equipe responsável pelo projeto
+//
 void tela_equipe(void) {
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
