@@ -102,8 +102,8 @@ Usuario* mod_us_cadastrar(void){
     free(primeiro);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    getchar();
     return primeiro;
+    getchar();
 }
 //
 //GRAVAR DADO NO ARQUIVO 
@@ -121,19 +121,19 @@ void grava_user(Usuario* primeiro){
 //
 //EXIBE USUARIO
 //
-void exibe_usuario(Usuario* al) {
+void exibe_usuario(Usuario* primeiro) {
   char situacao[20];
-  if ((al == NULL) || (al->status == 'x')) {
+  if ((primeiro == NULL) || (primeiro->status == 'x')) {
     printf("\n---Usuario Inexistente---\n");
   } else {
-    printf("\nNome do Usuario: %s\n", al->nome);
-    printf("Email: %s\n", al->email);
-    printf("Data: %s\n", al->data);
-    printf("Telefone: %s\n", al->numero);
-    printf("CPF: %s\n",al->cpf);
-    if (al->status == 'C') {
+    printf("\nNome do Usuario: %s\n", primeiro->nome);
+    printf("Email: %s\n", primeiro->email);
+    printf("Data: %s\n", primeiro->data);
+    printf("Telefone: %s\n", primeiro->numero);
+    printf("CPF: %s\n",primeiro->cpf);
+    if (primeiro->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
-    } else if (al->status == 't') {
+    } else if (primeiro->status == 't') {
       strcpy(situacao, "Trancado\n");
     } else {
       strcpy(situacao, "Sem dados\n");
