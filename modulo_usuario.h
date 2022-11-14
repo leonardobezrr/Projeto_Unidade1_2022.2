@@ -24,6 +24,7 @@ void mod_us_procurar(void);
 void listar_user(void);
 void grava_user(Usuario*);
 void exibe_usuario(Usuario*);
+void remove_usuario(void);
 
 
 //
@@ -97,13 +98,12 @@ Usuario* mod_us_cadastrar(void){
     printf("CPF: ");
     scanf("%20[^\n]",primeiro->cpf);
     getchar();
-
     primeiro->status = 'C';
     free(primeiro);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    return primeiro;
     getchar();
+    return primeiro;
 }
 //
 //GRAVAR DADO NO ARQUIVO 
@@ -219,13 +219,56 @@ void mod_us_remover(void){
     printf("///                            Remover Usuario                              ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o email: ");
-    scanf("%[@_.a-z0-9]",primeiro.email);
+    remove_usuario();
     getchar();
-    printf("\n               Removido com sucesso!                                       \n");        
+    printf("\n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 
+}
+//
+//REMOVER USUARIO
+//
+void remove_usuario(void){
+  FILE* fp;
+  Usuario* primeiro;
+  int achou;
+  char resposta;
+  char pesquisa[21];
+  fp = fopen("user.dat","r+b");
+  if (fp==NULL){
+    printf("\nOps!Ocorreu um erro ao tentar abrir o arquivo!\nTente rodar o programa novamente...\n");
+    exit(1);
+  }
+  printf("\nInforme o CPF: ");
+  scanf("%20[^\n]",pesquisa);
+  primeiro = (Usuario*) malloc(sizeof(Usuario));
+  achou = 0;
+  while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
+    if((strcmp(primeiro->nome,pesquisa)==0)&&(primeiro->status=='C')){
+      achou = 1;
+    }
+  }
+
+  if (achou){
+    exibe_usuario(primeiro);
+    getchar();
+    printf("Quer realmente deletar esse usuario (s/n)? ");
+    scanf("%c",&resposta);
+    getchar();
+    if(resposta == 's' || resposta == 'S'){
+      primeiro -> status = 'D';
+      fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
+      fwrite(primeiro,sizeof(Usuario),1,fp);
+      printf("\nUsuario deletado com sucesso!\n");
+    }else{
+      printf("\nCerto, o usuario permanece cadastrado\n");
+    }
+  }else{
+    printf("\nO usuario %s encontra-se inexistente...",pesquisa);
+  }
+  free(primeiro);
+  fclose(fp);
 }
 //
 ////LISTAR USUARIOS//
