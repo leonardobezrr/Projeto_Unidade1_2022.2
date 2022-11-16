@@ -99,7 +99,7 @@ Usuario* mod_us_cadastrar(void){
     scanf("%20[^\n]",primeiro->cpf);
     getchar();
     primeiro->status = 'C';
-    free(primeiro);
+    // free(primeiro);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
@@ -208,7 +208,6 @@ void mod_us_atualizar(void){
 ////REMOVER USUARIO//
 //
 void mod_us_remover(void){
-    Usuario primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
