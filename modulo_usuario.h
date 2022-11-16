@@ -133,10 +133,8 @@ void exibe_usuario(Usuario* primeiro) {
     printf("CPF: %s\n",primeiro->cpf);
     if (primeiro->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
-    } else if (primeiro->status == 't') {
-      strcpy(situacao, "Trancado\n");
     } else {
-      strcpy(situacao, "Sem dados\n");
+      strcpy(situacao, "Deletado\n");
     }
     printf("Status do Usuario: %s\n", situacao);
   }
@@ -219,7 +217,6 @@ void mod_us_remover(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
     remove_usuario();
-    getchar();
     printf("\n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
@@ -244,7 +241,7 @@ void remove_usuario(void){
   primeiro = (Usuario*) malloc(sizeof(Usuario));
   achou = 0;
   while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
-    if((strcmp(primeiro->nome,pesquisa)==0)&&(primeiro->status=='C')){
+    if((strcmp(primeiro->cpf,pesquisa)==0)&&(primeiro->status=='C')){
       achou = 1;
     }
   }
