@@ -5,6 +5,8 @@
 typedef struct venda Venda;
 //mod venda
 void mod_venda(void);
+void grava_venda(Venda*);
+
 //
 //MODULO VENDA
 //
@@ -14,7 +16,9 @@ struct venda {
   char preco[21];
 };
 
-
+//
+////  MENU VENDA
+//
 void mod_venda(void){
     Venda* primeiro;
     system("cls||clear");
@@ -35,8 +39,24 @@ void mod_venda(void){
     printf("Informe o valor: ");
     scanf("%20[^\n]",primeiro->preco);
     getchar();
+    grava_venda(primeiro);
+    free(primeiro);
     printf("\n\n\n       Venda feita com sucesso!\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
+    return primeiro;
+}
 
+//
+//GRAVAR DADO NO ARQUIVO 
+//
+void grava_venda(Venda* primeiro){
+    FILE* fp;
+    fp = fopen("venda.dat","ab");
+    if (fp == NULL){
+        printf("Ops!Ocorreu um erro na abertura do arquivo!\n");
+        printf("Nao foi possivel continuar este programa...\n ");
+    }
+    fwrite(primeiro,sizeof(Usuario),1,fp);
+    fclose(fp);
 }
