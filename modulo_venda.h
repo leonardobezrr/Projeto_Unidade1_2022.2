@@ -4,7 +4,7 @@
 #include <string.h>
 typedef struct venda Venda;
 //mod venda
-void mod_venda(void);
+Venda* mod_venda(void);
 void grava_venda(Venda*);
 
 //
@@ -19,7 +19,7 @@ struct venda {
 //
 ////  MENU VENDA
 //
-void mod_venda(void){
+Venda* mod_venda(void){
     Venda* primeiro;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
