@@ -16,7 +16,7 @@ struct estoque
 };
 //mod estoque 
 void mod_estoque(void);
-void mod_es_cadastrar(void);
+Estoque* mod_es_cadastrar(void);
 void mod_es_atualizar(void);
 void mod_es_remover(void);
 void mod_es_listar(void);
@@ -48,9 +48,8 @@ void mod_estoque(void){
     printf("\n             O que deseja? ");
     scanf("%c",&perg_es);
     getchar();
-    prod = (Estoque*) malloc(sizeof(Estoque));
     if (perg_es=='1'){
-        mod_es_cadastrar();
+        prod = mod_es_cadastrar();
         grava_prod(prod);
         free(prod);
     }else if (perg_es == '2'){
@@ -69,7 +68,7 @@ void mod_estoque(void){
 
 
 // cadastrar produto 
-void mod_es_cadastrar(void){
+Estoque* mod_es_cadastrar(void){
     Estoque* prod;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -95,11 +94,10 @@ void mod_es_cadastrar(void){
     scanf ("%20[^\n]",prod->preco);
     getchar();
     prod->status = 'C';
-    free(prod);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
-
+    return prod;
 }
 //gravar produto
 void grava_prod(Estoque* prod){
@@ -112,8 +110,9 @@ void grava_prod(Estoque* prod){
     fwrite(prod,sizeof(Estoque),1,fp);
     fclose(fp);
 }
-
+//
 //atualizar produto 
+//
 void mod_es_atualizar(void){
     char cod[20];
     char nome[20];
@@ -149,7 +148,9 @@ void mod_es_atualizar(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+//
 //remover produtos
+//
 void mod_es_remover(void){
     char cod[20];
     setlocale(LC_ALL,"Portuguese");
@@ -169,7 +170,9 @@ void mod_es_remover(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+//
 //procurar produtos
+//
 void mod_es_procurar(void){
     char cod[20];
     setlocale(LC_ALL,"Portuguese");
@@ -189,7 +192,9 @@ void mod_es_procurar(void){
     getchar();
 
 }
+//
 //exibe produtos
+//
 void exibe_estoque(Estoque* al) {
   char situacao[20];
   if ((al == NULL) || (al->status == 'x')) {
