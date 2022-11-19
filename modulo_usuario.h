@@ -31,7 +31,6 @@ void remove_usuario(void);
 //
 void mod_usuario(void){
     char perg_us;
-    Usuario* primeiro;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -51,9 +50,7 @@ void mod_usuario(void){
     scanf("%c",&perg_us);
     getchar();
     if (perg_us=='1'){
-        primeiro = mod_us_cadastrar();
-        grava_user(primeiro);
-        free(primeiro);
+        mod_us_cadastrar();
     }else if (perg_us == '2'){
         mod_us_atualizar();
     }else if (perg_us == '3'){
@@ -91,15 +88,25 @@ Usuario* mod_us_cadastrar(void){
     printf("Email: ");
     scanf("%40[^\n]",primeiro->email);
     getchar();
-    printf("Telefone (99) 99999-9999: ");
-    scanf ("%20[^\n]",primeiro->numero);
-    getchar();
-    printf("CPF: ");
-    scanf("%20[^\n]",primeiro->cpf);
-    getchar();
-    primeiro->status = 'C';
-    // free(primeiro);
-    printf("\n               Cadastrado com sucesso!                                       \n");
+    if (email_validacao(primeiro->email)){
+      printf("Telefone (99) 99999-9999: ");
+      scanf ("%20[^\n]",primeiro->numero);
+      getchar();
+      printf("CPF: ");
+      scanf("%20[^\n]",primeiro->cpf);
+      getchar();
+      if (validarCPF(primeiro->cpf)){
+        primeiro->status = 'C';
+        grava_user(primeiro);
+        free(primeiro);
+        printf("\n               Cadastrado com sucesso!                                       \n");
+      }else{
+        printf("\nCPF invalido...");
+      }
+      
+    }else{
+      printf("\nEmail invalido...");
+    }
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
     return primeiro;
@@ -203,7 +210,7 @@ void atualiza_user(void){
   primeiro = (Usuario*) malloc(sizeof(Usuario));
   achou = 0;
   while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
-    if ((strcmp(primeiro->cpf,pesquisa) == 0)&& (primeiro -> status == "C")){
+    if ((strcmp(primeiro->cpf,pesquisa) == 0)&& (primeiro -> status == 'C')){
       achou = 1;
     }
   }
@@ -212,7 +219,8 @@ void atualiza_user(void){
     getchar();
     printf("Deseja realmente alterar esse usuario (s/n)? ");
     scanf("%c",&resp);
-    if (resp == "s" || resp == "S"){
+    getchar();
+    if (resp == 's' || resp == 'S'){
       printf("Informe seu nome: ");
       scanf ("%30[^\n]",primeiro->nome);
       getchar();
