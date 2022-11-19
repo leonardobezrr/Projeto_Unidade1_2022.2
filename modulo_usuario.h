@@ -18,6 +18,7 @@ struct usuario {
 void mod_usuario(void);
 Usuario* mod_us_cadastrar(void);
 void mod_us_atualizar(void);
+void atualiza_user(void);
 void mod_us_remover(void);
 void mod_us_listar();
 void mod_us_procurar(void);
@@ -25,8 +26,6 @@ void listar_user(void);
 void grava_user(Usuario*);
 void exibe_usuario(Usuario*);
 void remove_usuario(void);
-
-
 //
 // Módulo USUARIO
 //
@@ -168,7 +167,6 @@ void listar_user(void){
 ////ATUALIZAR USUARIO//
 //
 void mod_us_atualizar(void){
-    Usuario* primeiro;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -179,27 +177,69 @@ void mod_us_atualizar(void){
     printf("///                            Atualizar Usuario                            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");  
-    primeiro = (Usuario*) malloc(sizeof(Usuario)); 
-    printf("Informe o CPF do usuario que deseja atualizar: ");
-    scanf("%20[^\n]",primeiro->cpf);
+    atualiza_user();
     getchar();
-    printf("\n - Agora digite os novos dados - \n\n");
-    printf("Informe o email: ");
-    scanf("%40[^\n]",primeiro->email);
-    getchar();
-    printf("Informe seu nome: ");
-    scanf ("%30[^\n]",primeiro->nome);
-    getchar();
-    printf("Sua data de nascimento (dd/mm/aa): ");
-    scanf ("%20[^\n]",primeiro->data);
-    getchar();
-    printf("Telefone (99) 99999-9999: ");
-    scanf ("%20[^\n]",primeiro->numero);
-    getchar();
-    free(primeiro);
     printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
+
+}
+//
+//ATUALIZANDO USUARIO
+//
+void atualiza_user(void){
+  FILE* fp;
+  Usuario* primeiro;
+  int achou;
+  char resp;
+  char pesquisa[21];
+  fp = fopen("user.dat","r+b");
+  if (fp == NULL){
+    printf("Infelizmente o arquivo apresentou algum erro...\n");
+    exit(1);
+  }
+  printf("\nInforme o CPF do usuario: ");
+  scanf("%20[^\n]",pesquisa);
+  primeiro = (Usuario*) malloc(sizeof(Usuario));
+  achou = 0;
+  while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
+    if ((strcmp(primeiro->cpf,pesquisa) == 0)&& (primeiro -> status == "C")){
+      achou = 1;
+    }
+  }
+  if (achou){
+    exibe_usuario(primeiro);
+    getchar();
+    printf("Deseja realmente alterar esse usuario (s/n)? ");
+    scanf("%c",&resp);
+    if (resp == "s" || resp == "S"){
+      printf("Informe seu nome: ");
+      scanf ("%30[^\n]",primeiro->nome);
+      getchar();
+      printf("Sua data de nascimento (dd/mm/aa): ");
+      scanf ("%20[^\n]",primeiro->data);
+      getchar();
+      printf("Email: ");
+      scanf("%40[^\n]",primeiro->email);
+      getchar();
+      printf("Telefone (99) 99999-9999: ");
+      scanf ("%20[^\n]",primeiro->numero);
+      getchar();
+      printf("CPF: ");
+      scanf("%20[^\n]",primeiro->cpf);
+      getchar();
+      primeiro->status = 'C';
+      fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
+      fwrite(primeiro,sizeof(Usuario),1,fp);
+      printf("\nUsuario alterado com sucesso!\n");
+    }else{
+      printf("\nCerto, seus dados permanecem intactos...\n");
+    }
+  }else{
+    printf("O usuario %s nao foi encontrado...\n",pesquisa);
+  }
+  free(primeiro);
+  fclose(fp);
 
 }
 //
