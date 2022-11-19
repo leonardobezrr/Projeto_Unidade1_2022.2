@@ -66,8 +66,9 @@ void mod_estoque(void){
 
 }
 
-
+//
 // cadastrar produto 
+//
 Estoque* mod_es_cadastrar(void){
     Estoque* prod;
     setlocale(LC_ALL,"Portuguese");
@@ -99,7 +100,9 @@ Estoque* mod_es_cadastrar(void){
     getchar();
     return prod;
 }
+//
 //gravar produto
+//
 void grava_prod(Estoque* prod){
     FILE* fp;
     fp = fopen("produto.dat","ab");
@@ -214,7 +217,9 @@ void exibe_estoque(Estoque* al) {
     printf("Status do Produto: %s\n", situacao);
   }
 }
+//
 //exibir lista
+//
 void exibe_lista_es(){
   FILE* fp;
   Estoque* aln;
@@ -233,8 +238,9 @@ void exibe_lista_es(){
   fclose(fp);
   free(aln);
 }
-
+//
 //listar produtos do estoque 
+//
 void mod_es_listar(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
