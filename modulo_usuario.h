@@ -369,6 +369,8 @@ void mod_us_procurar(void){
     }else{
       printf("\nUsuario inacessivel...\n");
     }
+    free(primeiro);
+    fclose(fp);
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
