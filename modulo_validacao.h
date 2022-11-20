@@ -53,7 +53,7 @@ int data_int(int dia, int mes, int ano){
 
     return 1;
 }
-//
+//data
 int data_char(char data[]){
     int dia, mes, ano;
 
