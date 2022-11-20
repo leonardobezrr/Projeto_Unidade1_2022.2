@@ -20,6 +20,7 @@ Estoque* mod_es_cadastrar(void);
 void mod_es_atualizar(void);
 void atualiza_es(void);
 void mod_es_remover(void);
+void remove_prod(void);
 void mod_es_listar(void);
 void mod_es_procurar(void);
 void grava_prod(Estoque*);
@@ -191,7 +192,6 @@ void atualiza_es(void){
 //remover produtos
 //
 void mod_es_remover(void){
-    char cod[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -202,12 +202,53 @@ void mod_es_remover(void){
     printf("///                            Remover Produto                              ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o codigo: ");
-    scanf("%[0-9]",cod);
-    getchar();
-    printf("\n               Removido com sucesso!                                       \n");    
+    remove_prod();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
+}
+//
+//REMOVE PRODUTO
+//
+void remove_prod(void){
+  FILE* fp;
+  Estoque* prod;
+  int achou;
+  char resposta;
+  char pesquisa[21];
+  fp = fopen("produto.dat","r+b");
+  if (fp==NULL){
+    printf("\nOps!Ocorreu um erro ao tentar abrir o arquivo!\nTente rodar o programa novamente...\n");
+    exit(1);
+  }
+  printf("\nInforme o codigo do produto: ");
+  scanf("%20[^\n]",pesquisa);
+  prod = (Estoque*) malloc(sizeof(Estoque));
+  achou = 0;
+  while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+    if((strcmp(prod->cod,pesquisa)==0)&&(prod->status=='C')){
+      achou = 1;
+    }
+  }
+  if (achou){
+    exibe_estoque(prod);
+    getchar();
+    printf("Quer realmente deletar esse produto (s/n)? ");
+    scanf("%c",&resposta);
+    getchar();
+    if(resposta == 's' || resposta == 'S'){
+      prod -> status = 'D';
+      fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
+      fwrite(prod,sizeof(Estoque),1,fp);
+      printf("\nUsuario deletado com sucesso!\n");
+    }else{
+      printf("\nCerto, o produto permanece cadastrado\n");
+    }
+  }else{
+    printf("\nO produto %s encontra-se inexistente...",pesquisa);
+  }
+  free(prod);
+  fclose(fp);
+
 }
 //
 //procurar produtos
@@ -266,10 +307,10 @@ void exibe_estoque(Estoque* al) {
     printf("Valor: %s\n", al->preco);
     if (al->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
-    } else if (al->status == 't') {
+    } else if (al->status == 'T') {
       strcpy(situacao, "Trancado\n");
     } else {
-      strcpy(situacao, "Sem dados\n");
+      strcpy(situacao, "Deletado\n");
     }
     printf("Status do Produto: %s\n", situacao);
   }
