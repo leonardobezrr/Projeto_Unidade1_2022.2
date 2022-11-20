@@ -185,8 +185,6 @@ void mod_us_atualizar(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");  
     atualiza_user();
-    getchar();
-    printf("\n               Atualizado com sucesso!                                       \n");    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 
@@ -339,6 +337,9 @@ void mod_us_listar(){
 //
 void mod_us_procurar(void){
     Usuario* primeiro;
+    FILE* fp;
+    int achou;
+    char pesquisa[21];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -349,11 +350,26 @@ void mod_us_procurar(void){
     printf("///                             Procurar Usuario                            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    fp = fopen("user.dat","rb");
+    if (fp == NULL){
+      printf("Infelizmente o arquivo apresentou algum erro...\n");
+      exit(1);
+    }
+    printf("Informe o CPF: ");
+    scanf("%20[^\n]",pesquisa);
     primeiro = (Usuario*) malloc(sizeof(Usuario));
-    printf("Informe o cpf: ");
-    scanf("%20[^\n]",primeiro->cpf);
+    achou = 0;
+    while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
+      if ((strcmp(primeiro->cpf,pesquisa) == 0)&& (primeiro -> status == 'C')){
+        achou = 1;
+      }
+    }
+    if (achou){
+      exibe_usuario(primeiro);
+    }else{
+      printf("\nUsuario inacessivel...\n");
+    }
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
     getchar();
 }
