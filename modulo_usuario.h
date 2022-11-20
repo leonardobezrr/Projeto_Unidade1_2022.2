@@ -291,7 +291,6 @@ void remove_usuario(void){
       achou = 1;
     }
   }
-
   if (achou){
     exibe_usuario(primeiro);
     getchar();
