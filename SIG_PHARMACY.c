@@ -103,7 +103,8 @@ char tela_principal() {
     getchar();
     return perg;
     }
-//
+//1
+
 //Tela sobre o projeto
 //
 void tela_sobre(void) {

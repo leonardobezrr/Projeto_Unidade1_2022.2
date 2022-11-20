@@ -330,7 +330,7 @@ void mod_us_listar(){
     listar_user();
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    system("pause");
+    getchar();
 }
 //
 ////PROCURAR USUARIOS//
