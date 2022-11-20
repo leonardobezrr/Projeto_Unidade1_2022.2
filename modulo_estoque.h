@@ -18,6 +18,7 @@ struct estoque
 void mod_estoque(void);
 Estoque* mod_es_cadastrar(void);
 void mod_es_atualizar(void);
+void atualiza_es(void);
 void mod_es_remover(void);
 void mod_es_listar(void);
 void mod_es_procurar(void);
@@ -117,11 +118,6 @@ void grava_prod(Estoque* prod){
 //atualizar produto 
 //
 void mod_es_atualizar(void){
-    char cod[20];
-    char nome[20];
-    char cod_novo[20];
-    char qnt[10];
-    char preco[20];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -132,24 +128,64 @@ void mod_es_atualizar(void){
     printf("///                            Atualizar Produto                            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o codigo: ");
-    scanf("%[0-9]",cod);
-    getchar();
-    printf("Informe o novo nome (ou o mesmo): ");
-    scanf("%[a-z A-Z]",nome);
-    getchar();
-    printf("Informe o novo codigo (ou o mesmo): ");
-    scanf("%[0-9]",cod_novo);
-    getchar();
-    printf("Informe a quatidade: ");
-    scanf("%[0-9]",qnt);
-    getchar();
-    printf("Informe o valor: ");
-    scanf("%[$,.rR 0-9]",preco);
-    getchar();
-    printf("\n               Atualizado com sucesso!                                       \n");    
+    atualiza_es();    
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
+}
+//
+//ATUALIZANDO ESTOQUE
+//
+void atualiza_es(void){
+    FILE* fp;
+    Estoque* prod;
+    int achou;
+    char resp;
+    char pesquisa[21];
+    fp = fopen("produto.dat","r+b");
+    if (fp == NULL){
+      printf("Infelizmente o arquivo apresentou algum erro...\n");
+      exit(1);
+    }
+    printf("\nInforme o codigo do produto: ");
+    scanf("%20[^\n]",pesquisa);
+    prod = (Estoque*) malloc(sizeof(Estoque));
+    achou = 0;
+    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+      if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
+        achou = 1;
+      }
+    }
+    if (achou){
+      exibe_estoque(prod);
+      getchar();
+      printf("Deseja realmente alterar esse usuario (s/n)? ");
+      scanf("%c",&resp);
+      getchar();
+      if (resp == 's'||resp == 'S'){
+        printf("Informe o nome do produto: ");
+        scanf ("%20[^\n]",prod->nome);
+        getchar();
+        printf("Quantidade: ");
+        scanf ("%10[^\n]",prod->qnt);
+        getchar();
+        printf("Codigo do produto: ");
+        scanf("%20[^\n]",prod->cod);
+        getchar();
+        printf("Valor: ");
+        scanf ("%20[^\n]",prod->preco);
+        getchar();
+        prod->status = 'C';
+        fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
+        fwrite(prod,sizeof(Estoque),1,fp);
+        printf("\nAtualizado com sucesso!                                       \n");
+      }else{
+        printf("\nCerto, o produto permanece intacto...\n");
+      }
+    }else{
+      printf("\nO produto %s nao foi encontrado...\n",pesquisa);
+    }
+    free(prod);
+    fclose(fp);
 }
 //
 //remover produtos
@@ -177,7 +213,10 @@ void mod_es_remover(void){
 //procurar produtos
 //
 void mod_es_procurar(void){
-    char cod[20];
+    Estoque* prod;
+    FILE* fp;
+    int achou;
+    char pesquisa[21];
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
@@ -188,12 +227,30 @@ void mod_es_procurar(void){
     printf("///                            Procurar produto                             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");   
-    printf("Informe o codigo: ");
-    scanf("%[0-9]",cod);
+    fp = fopen("produto.dat","rb");
+    if (fp == NULL){
+      printf("Infelizmente o arquivo apresentou algum erro...\n");
+      exit(1);
+    }
+    printf("Informe o codigo do produto: ");
+    scanf("%20[^\n]",pesquisa);
+    prod = (Estoque*) malloc(sizeof(Estoque));
+    achou = 0;
+    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+      if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
+        achou = 1;
+      }
+    }
+    if (achou){
+      exibe_estoque(prod);
+    }else{
+      printf("\nProduto inacessivel...\n");
+    }
+    free(prod);
+    fclose(fp);
     getchar();
-    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
-
 }
 //
 //exibe produtos
@@ -203,7 +260,7 @@ void exibe_estoque(Estoque* al) {
   if ((al == NULL) || (al->status == 'x')) {
     printf("\n---Prodto Inexistente---\n");
   } else {
-    printf("\nNome do Produto: %s\n", al->nome);
+    printf("\n\nNome do Produto: %s\n", al->nome);
     printf("Quantidade: %s\n", al->qnt);
     printf("Codigo do Produto: %s\n", al->cod);
     printf("Valor: %s\n", al->preco);
