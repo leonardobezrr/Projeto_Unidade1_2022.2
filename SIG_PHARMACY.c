@@ -68,7 +68,6 @@ int main(void) {
         }while (opcao!='0');   
     return 0;
 }
-
 // 
 //Primeira tela do programa
 //
@@ -103,8 +102,7 @@ char tela_principal() {
     getchar();
     return perg;
     }
-//1
-
+//
 //Tela sobre o projeto
 //
 void tela_sobre(void) {
