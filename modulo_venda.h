@@ -40,8 +40,8 @@ Venda* mod_venda(void){
     scanf("%20[^\n]",primeiro->preco);
     getchar();
     grava_venda(primeiro);
-    free(primeiro);
     printf("\n\n\n       Venda feita com sucesso!\n");
+    free(primeiro);
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
     return primeiro;
