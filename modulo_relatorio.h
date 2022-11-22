@@ -77,6 +77,10 @@ void mod_rt_listar_gastos(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Relatorio de gastos:\n");
+    printf("Codigo do produto: 2145\n");
+    printf("Nome do produto: Omeprasol\n");
+    printf("Quantidade de produtos: 2\n");
+    printf("Valor Unitario do produto: 30\n\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
@@ -93,6 +97,8 @@ void mod_rt_listar_lucros(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Relatorio de lucros:\n");
+    printf("\n - Lucro -\n");
+    printf("\nR$20.000,00\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
