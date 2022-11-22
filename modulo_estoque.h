@@ -51,9 +51,7 @@ void mod_estoque(void){
     scanf("%c",&perg_es);
     getchar();
     if (perg_es=='1'){
-        prod = mod_es_cadastrar();
-        grava_prod(prod);
-        free(prod);
+        mod_es_cadastrar();
     }else if (perg_es == '2'){
         mod_es_atualizar();
     }else if (perg_es == '3'){
@@ -97,6 +95,8 @@ Estoque* mod_es_cadastrar(void){
     scanf ("%20[^\n]",prod->preco);
     getchar();
     prod->status = 'C';
+    grava_prod(prod);
+    free(prod);
     printf("\n               Cadastrado com sucesso!                                       \n");
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
