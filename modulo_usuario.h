@@ -97,13 +97,10 @@ Usuario* mod_us_cadastrar(void){
       getchar();
       if (validarCPF(primeiro->cpf)){
         primeiro->status = 'C';
-        if (primeiro->nome != "[a-z]" || primeiro->nome != "[A-Z]"){
-          printf("\nNome invalido...tente novamente!\n");
-        }else{
         grava_user(primeiro);
         free(primeiro);
         printf("\n               Cadastrado com sucesso!                                       \n");
-        }
+        
       }else{
         printf("\nCPF invalido...");
       }
