@@ -47,10 +47,10 @@ int main(void) {
                 //free(comp);
                 //break;
             case '3': 
-                mod_relatorio();
+                mod_venda();
                 break;
             case '4': 
-                mod_venda();
+                mod_relatorio();                
                 break;
             case '5':
                 tela_equipe();
@@ -90,8 +90,8 @@ char tela_principal() {
     printf("///                                                                         ///\n");
     printf("///            1. Modulo Usuarios                                           ///\n");
     printf("///            2. Modulo Estoque                                            ///\n");
-    printf("///            3. Modulo Relatorios                                         ///\n");
-    printf("///            4. Modulo Vendas                                             ///\n");
+    printf("///            3. Modulo Venda                                              ///\n");
+    printf("///            4. Modulo Relatorios                                         ///\n");
     printf("///            5. Equipe e sobre                                            ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
