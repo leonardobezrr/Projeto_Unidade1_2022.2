@@ -31,7 +31,6 @@ void exibe_estoque(Estoque*);
 //
 void mod_estoque(void){
     system("cls||clear");
-    Estoque* prod;
     char perg_es;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
