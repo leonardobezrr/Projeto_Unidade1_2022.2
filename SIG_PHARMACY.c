@@ -159,6 +159,7 @@ void tela_equipe(void) {
     printf("///           Git: https://github.com/leonardobezrr/Projeto_Unidade1_2022.2 ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    
     //system("pause");
     printf("\n\n\n\nCLique para continuar...");
     getchar();
