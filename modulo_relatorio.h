@@ -4,7 +4,6 @@
 #include <locale.h>
 #include <stdio.h>
 #include <string.h>
-//#include "modulo_venda.h"
 
 //mod relatorio
 void mod_relatorio(void);
@@ -16,8 +15,8 @@ typedef struct venda Venda;
 //mod venda
 struct venda {
   char cod[21];
-  char qnt[11];
-  char preco[21];
+  long int qnt;
+  long int preco;
   char status;
 };
 
@@ -49,10 +48,10 @@ Venda* mod_venda(void){
     scanf("%20[^\n]",primeiro->cod);
     getchar();
     printf("Informe a quantidade: ");
-    scanf ("%10[^\n]",primeiro->qnt);
+    scanf ("%ld[^\n]",&primeiro->qnt);
     getchar();
     printf("Informe o valor: ");
-    scanf("%20[^\n]",primeiro->preco);
+    scanf("%ld[^\n]",&primeiro->preco);
     getchar();
     primeiro->status = 'C';
     grava_venda(primeiro);
@@ -110,36 +109,17 @@ void exibe_venda(Venda* primeiro) {
     printf("\n---Venda Inexistente---\n");
   } else {
     printf("\nCodigo do produto: %s\n", primeiro->cod);
-    printf("Quantidade: %s\n", primeiro->qnt);
-    printf("Valor: %s\n", primeiro->preco);
+    printf("Quantidade: %ld\n", primeiro->qnt);
+    printf("Valor: %ld\n", primeiro->preco);
     if (primeiro->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
     } else {
       strcpy(situacao, "Deletado\n");
     }
-    printf("Status do Venda: %s\n", situacao);
+    printf("Status da venda: %s\n", situacao);
   }
 }
-//
-//LISTAR VENDA
-//
-void mod_venda_listar(){
-    setlocale(LC_ALL,"Portuguese");
-    printf("\n");
-    system("cls||clear");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                               Menu Venda                                ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///                              Listar Vendas                              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\nVendas efetuadas:\n");
-    listar_venda();
-    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    getchar();
-}
+
 //
 //MODULO RELATORIO
 //
@@ -173,8 +153,36 @@ void mod_relatorio(void)
     }
     
 }
+//////////////////////////////////////////////////////
 
-//listar gastos
+//////////////    RELATORIO     ///////////////////////
+
+//////////////////////////////////////////////////////
+
+//
+//LISTAR VENDA
+//
+void mod_venda_listar(){
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    system("cls||clear");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                               Menu Venda                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                              Listar Vendas                              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\nVendas efetuadas:\n");
+    listar_venda();
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    getchar();
+}
+
+//
+//LISTAR GASTOS
+//
 void mod_rt_listar_gastos(void){
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -194,6 +202,7 @@ void mod_rt_listar_gastos(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
+
 //listar lucros
 void mod_rt_listar_lucros(void){
     setlocale(LC_ALL,"Portuguese");

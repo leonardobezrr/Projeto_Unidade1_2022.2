@@ -14,7 +14,6 @@
 #include <locale.h>
 #include "modulo_usuario.h"
 #include "modulo_estoque.h"
-#include "modulo_venda.h"
 #include "modulo_relatorio.h"
 ////////
 // Assinatura das funções
