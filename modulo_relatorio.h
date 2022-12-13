@@ -4,13 +4,142 @@
 #include <locale.h>
 #include <stdio.h>
 #include <string.h>
-
+//#include "modulo_venda.h"
 
 //mod relatorio
 void mod_relatorio(void);
 void mod_rt_listar_vendas(void);
 void mod_rt_listar_lucros(void);
 void mod_rt_listar_gastos(void);
+
+typedef struct venda Venda;
+//mod venda
+struct venda {
+  char cod[21];
+  char qnt[11];
+  char preco[21];
+  char status;
+};
+
+Venda* mod_venda(void);
+void grava_venda(Venda*);
+void listar_venda(void);
+void exibe_venda(Venda*);
+void mod_venda_listar();
+//
+//MODULO VENDA
+//
+
+
+//
+////  MENU VENDA
+//
+Venda* mod_venda(void){
+    Venda* primeiro;
+    system("cls||clear");
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n"); 
+    printf("///                               Menu Venda                                ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    primeiro = (Venda*) malloc(sizeof(Venda));
+    printf("\nInforme o codigo do produto: ");
+    scanf("%20[^\n]",primeiro->cod);
+    getchar();
+    printf("Informe a quantidade: ");
+    scanf ("%10[^\n]",primeiro->qnt);
+    getchar();
+    printf("Informe o valor: ");
+    scanf("%20[^\n]",primeiro->preco);
+    getchar();
+    primeiro->status = 'C';
+    grava_venda(primeiro);
+    printf("\n\n\n       Venda feita com sucesso!\n");
+    free(primeiro);
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    getchar();
+    return primeiro;
+}
+//
+//GRAVAR DADO NO ARQUIVO 
+//
+void grava_venda(Venda* primeiro){
+    FILE* fp;
+    fp = fopen("venda.dat","ab");
+    if (fp == NULL){
+        printf("Ops!Ocorreu um erro na abertura do arquivo!\n");
+        printf("Nao foi possivel continuar este programa...\n ");
+    }
+    fwrite(primeiro,sizeof(Venda),1,fp);
+    fclose(fp);
+}
+//
+//LISTA VENDA
+//
+void listar_venda(void){
+  FILE* fp;
+  Venda* aln;
+  int achou;
+  achou = 0;
+  aln = (Venda*) malloc(sizeof(Venda));
+  fp = fopen("venda.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tivemos que encerrar o programa...\n");
+    printf("\nlistar");
+    exit(1);
+  }
+  while(fread(aln, sizeof(Venda), 1, fp)) {
+    if (aln->status != 'x') {
+      achou += 1;
+      printf ("\n  - Venda %d - \n",achou);
+      exibe_venda(aln);
+    }
+  }
+  fclose(fp);
+  free(aln);
+}
+//
+//EXIBE VENDA
+//
+void exibe_venda(Venda* primeiro) {
+  char situacao[20];
+  if ((primeiro == NULL) || (primeiro->status == 'x')) {
+    printf("\n---Venda Inexistente---\n");
+  } else {
+    printf("\nCodigo do produto: %s\n", primeiro->cod);
+    printf("Quantidade: %s\n", primeiro->qnt);
+    printf("Valor: %s\n", primeiro->preco);
+    if (primeiro->status == 'C') {
+      strcpy(situacao, "Cadastrado\n");
+    } else {
+      strcpy(situacao, "Deletado\n");
+    }
+    printf("Status do Venda: %s\n", situacao);
+  }
+}
+//
+//LISTAR VENDA
+//
+void mod_venda_listar(){
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    system("cls||clear");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                               Menu Venda                                ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///                              Listar Vendas                              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\nVendas efetuadas:\n");
+    listar_venda();
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    getchar();
+}
 //
 //MODULO RELATORIO
 //
@@ -34,7 +163,7 @@ void mod_relatorio(void)
     scanf("%c",&perg);
     getchar();
     if (perg=='1'){
-        mod_rt_listar_vendas();
+        mod_venda_listar();
     }else if(perg == '2'){
         mod_rt_listar_gastos();
     }else if (perg=='3'){
@@ -44,26 +173,7 @@ void mod_relatorio(void)
     }
     
 }
-//listar relatorio de venda
-void mod_rt_listar_vendas(void){
-    setlocale(LC_ALL,"portuguese");
-    printf("\n");
-    system("cls||clear");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                           Menu Relatorio                                ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///                         Listar Relatorio                                ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("Relatorio de vendas:\n\n");
-    printf("Codigo do produto: 123\n");
-    printf("Nome do produto: Dipirona\n");
-    printf("Quantidade de produtos: 12\n");
-    printf("Valor Unitario do produto: 30\n\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    getchar();
-}
+
 //listar gastos
 void mod_rt_listar_gastos(void){
     setlocale(LC_ALL,"Portuguese");
@@ -93,7 +203,7 @@ void mod_rt_listar_lucros(void){
     printf("///                           Menu Relatorio                                ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///                         Listar Lucros                                   ///\n");
+    printf("///                           Listar Lucros                                 ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("Relatorio de lucros:\n");
