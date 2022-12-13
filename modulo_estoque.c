@@ -276,7 +276,7 @@ void mod_es_procurar(void){
 void exibe_estoque(Estoque* al) {
   char situacao[20];
   if ((al == NULL) || (al->status == 'x')) {
-    printf("\n---Prodto Inexistente---\n");
+    printf("\n---Produto Inexistente---\n");
   } else {
     printf("\n\nNome do Produto: %s\n", al->nome);
     printf("Quantidade: %ld\n", al->qnt);
