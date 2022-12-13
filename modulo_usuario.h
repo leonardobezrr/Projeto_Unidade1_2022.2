@@ -1,5 +1,3 @@
-
-
 typedef struct usuario Usuario;
 
 struct usuario {
