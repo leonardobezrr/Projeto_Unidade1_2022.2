@@ -61,7 +61,6 @@ void listar_venda(void){
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tivemos que encerrar o programa...\n");
-    printf("\nlistar");
     exit(1);
   }
   while(fread(aln, sizeof(Venda), 1, fp)) {
