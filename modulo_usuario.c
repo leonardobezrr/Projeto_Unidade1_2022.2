@@ -208,16 +208,25 @@ void atualiza_user(void){
       printf("Email: ");
       scanf("%40[^\n]",primeiro->email);
       getchar();
-      printf("Telefone (99) 99999-9999: ");
-      scanf ("%20[^\n]",primeiro->numero);
-      getchar();
-      printf("CPF: ");
-      scanf("%20[^\n]",primeiro->cpf);
-      getchar();
-      primeiro->status = 'C';
-      fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
-      fwrite(primeiro,sizeof(Usuario),1,fp);
-      printf("\nUsuario alterado com sucesso!\n");
+      if (email_validacao(primeiro->email)){
+        printf("Telefone (99) 99999-9999: ");
+        scanf ("%20[^\n]",primeiro->numero);
+        getchar();
+        printf("CPF: ");
+        scanf("%20[^\n]",primeiro->cpf);
+        getchar();
+        if (validarCPF(primeiro->cpf)){
+          primeiro->status = 'C';
+          primeiro->status = 'C';
+          fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
+          fwrite(primeiro,sizeof(Usuario),1,fp);
+          printf("\nUsuario alterado com sucesso!\n");
+        }else{
+          printf("\nCPF invalido...");
+        }
+      }else{
+        printf("\nEmail invalido...");
+      }
     }else{
       printf("\nCerto, seus dados permanecem intactos...\n");
     }
