@@ -7,7 +7,7 @@ struct estoque
     char nome[21];
     long int qnt;
     char cod[21];
-    long int preco;
+    float preco;
     char status;
 };
 //mod estoque 

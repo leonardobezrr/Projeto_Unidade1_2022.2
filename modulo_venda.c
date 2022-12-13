@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "modulo_venda.h"
+#include "modulo_estoque.h"
 
 //
 ////  MENU VENDA
@@ -25,7 +26,7 @@ Venda* mod_venda(void){
     scanf ("%ld[^\n]",&primeiro->qnt);
     getchar();
     printf("Informe o valor: ");
-    scanf("%ld[^\n]",&primeiro->preco);
+    scanf("%f[^\n]",&primeiro->preco);
     getchar();
     primeiro->status = 'C';
     grava_venda(primeiro);
@@ -83,7 +84,7 @@ void exibe_venda(Venda* primeiro) {
   } else {
     printf("\nCodigo do produto: %s\n", primeiro->cod);
     printf("Quantidade: %ld\n", primeiro->qnt);
-    printf("Valor: %ld\n", primeiro->preco);
+    printf("Valor: %.2f\n", primeiro->preco);
     if (primeiro->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
     } else {
