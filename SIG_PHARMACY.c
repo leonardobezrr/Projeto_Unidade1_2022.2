@@ -15,6 +15,7 @@
 #include "modulo_usuario.h"
 #include "modulo_estoque.h"
 #include "modulo_relatorio.h"
+#include "modulo_venda.h"
 ////////
 // Assinatura das funções
 ////////

@@ -72,7 +72,7 @@ int data_char(char data[]){
 
     return 0;
 }
-
+//email
 int email_validacao(char email[]){
 
     int arroba = 0, ponto = 0;
