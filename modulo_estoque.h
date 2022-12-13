@@ -5,9 +5,9 @@ typedef struct estoque Estoque;
 struct estoque
 {
     char nome[21];
-    char qnt[11];
+    long int qnt;
     char cod[21];
-    char preco[21];
+    long int preco;
     char status;
 };
 //mod estoque 
