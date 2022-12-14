@@ -10,6 +10,11 @@
 //
 Venda* mod_venda(void){
     Venda* primeiro;
+    Estoque* prod;
+    FILE* fp;
+    int achou;
+    char pesquisa[21];
+    char pergunta;
     system("cls||clear");
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
@@ -19,19 +24,45 @@ Venda* mod_venda(void){
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     primeiro = (Venda*) malloc(sizeof(Venda));
-    printf("\nInforme o codigo do produto: ");
-    scanf("%20[^\n]",primeiro->cod);
+    printf("Informe o codigo do produto: ");
+    scanf("%20[^\n]",pesquisa);
     getchar();
-    printf("Informe a quantidade: ");
-    scanf ("%ld[^\n]",&primeiro->qnt);
-    getchar();
-    printf("Informe o valor: ");
-    scanf("%f[^\n]",&primeiro->preco);
-    getchar();
+    //Procurando produto no estoque
+    fp = fopen("produto.dat","rb");
+    if (fp == NULL){
+      printf("Infelizmente o arquivo apresentou algum erro...\n");
+      exit(1);
+    }
+    prod = (Estoque*) malloc(sizeof(Estoque));
+    achou = 0;
+    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+      if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
+        achou = 1;
+      }
+    }
+    if (achou){
+      exibe_estoque_venda(prod);
+      printf("\nEste produto que deseja (s/n) ? ");
+      scanf ("%c",&pergunta);
+      if (pergunta == 's' || pergunta == 'S'){
+        printf("Informe a quantidade: ");
+        scanf ("%f[^\n]",&primeiro->qnt);
+        getchar();
+        primeiro->preco = (primeiro->qnt)*(prod->preco);
+        printf("\n\n\n       Venda feita com sucesso!\n");
+      }else{
+        printf("\nCerto, entao tente novamente...");
+        exit(1);
+      }
+    }else{
+      printf("\nProduto inacessivel...\nTente novamente!");
+      exit(1);
+    }
     primeiro->status = 'C';
     grava_venda(primeiro);
-    printf("\n\n\n       Venda feita com sucesso!\n");
     free(primeiro);
+    free(prod);
+    fclose(fp);
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
     return primeiro;
@@ -78,12 +109,13 @@ void listar_venda(void){
 //EXIBE VENDA
 //
 void exibe_venda(Venda* primeiro) {
+  Estoque* prod;
   char situacao[20];
   if ((primeiro == NULL) || (primeiro->status == 'x')) {
     printf("\n---Venda Inexistente---\n");
   } else {
-    printf("\nCodigo do produto: %s\n", primeiro->cod);
-    printf("Quantidade: %ld\n", primeiro->qnt);
+    printf("\nCodigo do produto: %s\n", prod->cod);
+    printf("Quantidade: %.f\n", primeiro->qnt);
     printf("Valor: %.2f\n", primeiro->preco);
     if (primeiro->status == 'C') {
       strcpy(situacao, "Cadastrado\n");

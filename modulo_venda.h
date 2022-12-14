@@ -2,7 +2,7 @@ typedef struct venda Venda;
 //mod venda
 struct venda {
   char cod[21];
-  long int qnt;
+  float qnt;
   float preco;
   char status;
 };

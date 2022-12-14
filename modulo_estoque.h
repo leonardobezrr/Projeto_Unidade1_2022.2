@@ -11,6 +11,7 @@ struct estoque
     char status;
 };
 //mod estoque 
+void exibe_estoque_venda(Estoque*);
 void mod_estoque(void);
 Estoque* mod_es_cadastrar(void);
 void mod_es_atualizar(void);

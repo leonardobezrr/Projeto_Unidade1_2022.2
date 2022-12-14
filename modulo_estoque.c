@@ -293,6 +293,20 @@ void exibe_estoque(Estoque* al) {
   }
 }
 //
+//Exibe estoque venda
+//
+void exibe_estoque_venda(Estoque* al) {
+  if ((al == NULL) || (al->status == 'x')) {
+    printf("\n---Produto Inexistente---\n");
+  } else {
+    printf("\n\nNome do Produto: %s\n", al->nome);
+    printf("Quantidade: %ld\n", al->qnt);
+    printf("Valor: %.2f\n", al->preco);
+  }
+}
+
+
+//
 //exibir lista
 //
 void exibe_lista_es(){
