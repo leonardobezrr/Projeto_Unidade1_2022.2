@@ -292,8 +292,62 @@ void exibe_estoque(Estoque* al) {
     printf("Status do Produto: %s\n", situacao);
   }
 }
+
 //
-//Exibe estoque venda
+//Exibe estoque venda confirmação
+//
+void exibe_estoque_venda_v() {
+  FILE* fp;
+  Estoque* al;
+  al = (Estoque*) malloc(sizeof(Estoque));
+  fp = fopen("produto.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tivemos que encerrar o programa...\n");
+    exit(1);
+  }
+  while(fread(al, sizeof(Estoque), 1, fp)) {
+    if (al->status != 'x') {
+      exibe_estoque_venda(al);
+    }
+  }
+  fclose(fp);
+  free(al);
+}
+//
+//Exibe estoque venda listagem no relatório
+//
+void exibe_estoque_venda_re() {
+  FILE* fp;
+  Estoque* al;
+  al = (Estoque*) malloc(sizeof(Estoque));
+  fp = fopen("produto.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tivemos que encerrar o programa...\n");
+    exit(1);
+  }
+  while(fread(al, sizeof(Estoque), 1, fp)) {
+    if (al->status != 'x') {
+      exibe_venda_re(al);
+    }
+  }
+  fclose(fp);
+  free(al);
+}
+//
+//Exibe estoque venda relatorio
+//
+void exibe_venda_re(Estoque* al) {
+  if ((al == NULL) || (al->status == 'x')) {
+    printf("\n---Produto Inexistente---\n");
+  } else {
+    printf("\nCodigo do Produto: %s\n", al->cod);
+
+  }
+}
+//
+//Exibe estoque venda confirmação
 //
 void exibe_estoque_venda(Estoque* al) {
   if ((al == NULL) || (al->status == 'x')) {
