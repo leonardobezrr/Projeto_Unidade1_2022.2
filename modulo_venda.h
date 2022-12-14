@@ -1,5 +1,6 @@
 typedef struct venda Venda;
 //mod venda
+
 struct venda {
   char cod[21];
   float qnt;
