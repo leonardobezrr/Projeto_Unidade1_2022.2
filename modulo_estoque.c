@@ -68,8 +68,11 @@ Estoque* mod_es_cadastrar(void){
     printf("Codigo do produto: ");
     scanf("%20[^\n]",prod->cod);
     getchar();
-    printf("Valor: ");
-    scanf ("%f[^\n]",&prod->preco);
+    printf("Valor de venda: ");
+    scanf ("%f[^\n]",&prod->preco_v);
+    getchar();
+    printf("Valor de compra: ");
+    scanf ("%f[^\n]",&prod->preco_c);
     getchar();
     prod->status = 'C';
     grava_prod(prod);
@@ -149,8 +152,11 @@ void atualiza_es(void){
         printf("Codigo do produto: ");
         scanf("%20[^\n]",prod->cod);
         getchar();
-        printf("Valor: ");
-        scanf ("%f[^\n]",&prod->preco);
+        printf("Valor de venda: ");
+        scanf ("%f[^\n]",&prod->preco_v);
+        getchar();
+        printf("Valor de compra: ");
+        scanf ("%f[^\n]",&prod->preco_c);
         getchar();
         prod->status = 'C';
         fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
@@ -281,7 +287,8 @@ void exibe_estoque(Estoque* al) {
     printf("\n\nNome do Produto: %s\n", al->nome);
     printf("Quantidade: %ld\n", al->qnt);
     printf("Codigo do Produto: %s\n", al->cod);
-    printf("Valor: %.2f\n", al->preco);
+    printf("Valor de venda: %.2f\n", al->preco_v);
+    printf("Valor de compra: %.2f\n", al->preco_c);
     if (al->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
     } else if (al->status == 'T') {
@@ -355,7 +362,7 @@ void exibe_estoque_venda(Estoque* al) {
   } else {
     printf("\n\nNome do Produto: %s\n", al->nome);
     printf("Quantidade: %ld\n", al->qnt);
-    printf("Valor: %.2f\n", al->preco);
+    printf("Valor: %.2f\n", al->preco_v);
   }
 }
 

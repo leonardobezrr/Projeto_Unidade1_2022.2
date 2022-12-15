@@ -345,6 +345,7 @@ void mod_us_procurar(void){
     }
     printf("Informe o CPF: ");
     scanf("%20[^\n]",pesquisa);
+    getchar();
     primeiro = (Usuario*) malloc(sizeof(Usuario));
     achou = 0;
     while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
