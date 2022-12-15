@@ -113,7 +113,7 @@ void exibe_venda(Venda* primeiro) {
   if ((primeiro == NULL) || (primeiro->status == 'x')) {
     printf("\n---Venda Inexistente---\n");
   } else {
-    exibe_estoque_venda_re();
+    printf("\nCodigo do produto: 123");
     printf("Quantidade: %.f\n", primeiro->qnt);
     printf("Valor: %.2f\n", primeiro->preco);
     if (primeiro->status == 'C') {
