@@ -30,67 +30,67 @@ Venda* mod_venda(void){
     fp_us = fopen("user.dat","rb");
     if (fp_us == NULL){
       printf("Infelizmente o arquivo apresentou algum erro...\n");
-      exit(1);
-    }
-    printf("Informe o CPF do cliente (cadastrar caso seja preciso): ");
-    scanf("%20[^\n]",pesquisa);
-    getchar();
-    user = (Usuario*) malloc(sizeof(Usuario));
-
-    achou_us = 0;
-    while ((!achou_us)&&(fread(user,sizeof(Usuario),1,fp_us))){
-      if ((strcmp(user->cpf,pesquisa) == 0)&& (user -> status == 'C')){
-        achou_us = 1;
-      }
-    }
-    if (achou_us){
-      printf("\nUsuario encontrado: %s!\n",user->nome);
-      primeiro = (Venda*) malloc(sizeof(Venda));
-      printf("Informe o codigo do produto: ");
+      printf("\n\nTente novamente!\n");
+    }else{
+      printf("Informe o CPF do cliente (cadastrar caso seja preciso): ");
       scanf("%20[^\n]",pesquisa);
       getchar();
-      //Procurando produto no estoque
-      fp = fopen("produto.dat","rb");
-      if (fp == NULL){
-        printf("Infelizmente o arquivo apresentou algum erro...\n");
-        exit(1);
-      }
-      prod = (Estoque*) malloc(sizeof(Estoque));
-      achou = 0;
-      while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
-        if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
-          achou = 1;
+      user = (Usuario*) malloc(sizeof(Usuario));
+
+      achou_us = 0;
+      while ((!achou_us)&&(fread(user,sizeof(Usuario),1,fp_us))){
+        if ((strcmp(user->cpf,pesquisa) == 0)&& (user -> status == 'C')){
+          achou_us = 1;
         }
       }
-      if (achou){
-        exibe_estoque_venda(prod);
-        printf("\nEste produto que deseja (s/n) ? ");
-        scanf ("%c",&pergunta);
-        if (pergunta == 's' || pergunta == 'S'){
-          printf("Informe a quantidade: ");
-          scanf ("%f[^\n]",&primeiro->qnt);
-          getchar();
-          primeiro->preco_v = (primeiro->qnt)*(prod->preco_v);
-          printf("\n\n\n       Venda feita com sucesso!\n");
+      if (achou_us){
+        printf("\nUsuario encontrado: %s!\n",user->nome);
+        primeiro = (Venda*) malloc(sizeof(Venda));
+        printf("Informe o codigo do produto: ");
+        scanf("%20[^\n]",pesquisa);
+        getchar();
+        //Procurando produto no estoque
+          fp = fopen("produto.dat","rb");
+        if (fp == NULL){
+          printf("Infelizmente o arquivo apresentou algum erro...\n");
         }else{
-          printf("\nCerto, entao tente novamente...");
-          exit(1);
+          ////////////////////////////////
+          prod = (Estoque*) malloc(sizeof(Estoque));                  ////////////////////////////////
+          achou = 0;                                          ////////////////////////////////
+          while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){                       ////////////////////////////////
+            if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){       ////////////////////////////////
+              achou = 1;                                          ////////////////////////////////
+            }                                                           ////////////////////////////////////////////////
+          }                                                               ////////////////////////////////////////////////
+          //
+          if (achou){
+            exibe_estoque_venda(prod);
+            printf("\nEste produto que deseja (s/n) ? ");
+            scanf ("%c",&pergunta);
+            if (pergunta == 's' || pergunta == 'S'){
+              printf("Informe a quantidade: ");
+              scanf ("%f[^\n]",&primeiro->qnt);
+              getchar();
+              primeiro->preco_v = (primeiro->qnt)*(prod->preco_v);
+              printf("\n\n\n       Venda feita com sucesso!\n");
+            }else{
+              printf("\nCerto, entao tente novamente...\n");
+            }
+          }else{
+            printf("\nProduto inacessivel...\nTente novamente!\n");
+          }
         }
+        primeiro->status = 'C';
+        grava_venda(primeiro);
+        free(primeiro);
+        free(prod);
+        fclose(fp);
+        free(user);
       }else{
-        printf("\nProduto inacessivel...\nTente novamente!");
-        exit(1);
+          printf("\nUsuario inacessivel...\n");
       }
-      primeiro->status = 'C';
-      grava_venda(primeiro);
-    }else{
-        printf("\nUsuario inacessivel...\n");
+      fclose(fp_us);
     }
-    
-    free(primeiro);
-    free(prod);
-    fclose(fp);
-    free(user);
-    fclose(fp_us);
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
     return primeiro;
@@ -121,13 +121,13 @@ void listar_venda(void){
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tivemos que encerrar o programa...\n");
-    exit(1);
-  }
-  while(fread(aln, sizeof(Venda), 1, fp)) {
-    if (aln->status != 'x') {
-      achou += 1;
-      printf ("\n  - Venda %d - \n",achou);
-      exibe_venda(aln);
+  }else{
+    while(fread(aln, sizeof(Venda), 1, fp)) {
+      if (aln->status != 'x') {
+        achou += 1;
+        printf ("\n  - Venda %d - \n",achou);
+        exibe_venda(aln);
+      }
     }
   }
   fclose(fp);

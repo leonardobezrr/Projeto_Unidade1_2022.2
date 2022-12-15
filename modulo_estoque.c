@@ -125,48 +125,48 @@ void atualiza_es(void){
     fp = fopen("produto.dat","r+b");
     if (fp == NULL){
       printf("Infelizmente o arquivo apresentou algum erro...\n");
-      exit(1);
-    }
-    printf("\nInforme o codigo do produto: ");
-    scanf("%20[^\n]",pesquisa);
-    prod = (Estoque*) malloc(sizeof(Estoque));
-    achou = 0;
-    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
-      if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
-        achou = 1;
-      }
-    }
-    if (achou){
-      exibe_estoque(prod);
-      getchar();
-      printf("Deseja realmente alterar esse usuario (s/n)? ");
-      scanf("%c",&resp);
-      getchar();
-      if (resp == 's'||resp == 'S'){
-        printf("Informe o nome do produto: ");
-        scanf ("%20[^\n]",prod->nome);
-        getchar();
-        printf("Quantidade: ");
-        scanf ("%ld[^\n]",&prod->qnt);
-        getchar();
-        printf("Codigo do produto: ");
-        scanf("%20[^\n]",prod->cod);
-        getchar();
-        printf("Valor de venda: ");
-        scanf ("%f[^\n]",&prod->preco_v);
-        getchar();
-        printf("Valor de compra: ");
-        scanf ("%f[^\n]",&prod->preco_c);
-        getchar();
-        prod->status = 'C';
-        fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
-        fwrite(prod,sizeof(Estoque),1,fp);
-        printf("\nAtualizado com sucesso!                                       \n");
-      }else{
-        printf("\nCerto, o produto permanece intacto...\n");
-      }
     }else{
-      printf("\nO produto %s nao foi encontrado...\n",pesquisa);
+      printf("\nInforme o codigo do produto: ");
+      scanf("%20[^\n]",pesquisa);
+      prod = (Estoque*) malloc(sizeof(Estoque));
+      achou = 0;
+      while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+        if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
+          achou = 1;
+        }
+      }
+      if (achou){
+        exibe_estoque(prod);
+        getchar();
+        printf("Deseja realmente alterar esse usuario (s/n)? ");
+        scanf("%c",&resp);
+        getchar();
+        if (resp == 's'||resp == 'S'){
+          printf("Informe o nome do produto: ");
+          scanf ("%20[^\n]",prod->nome);
+          getchar();
+          printf("Quantidade: ");
+          scanf ("%ld[^\n]",&prod->qnt);
+          getchar();
+          printf("Codigo do produto: ");
+          scanf("%20[^\n]",prod->cod);
+          getchar();
+          printf("Valor de venda: ");
+          scanf ("%f[^\n]",&prod->preco_v);
+          getchar();
+          printf("Valor de compra: ");
+          scanf ("%f[^\n]",&prod->preco_c);
+          getchar();
+          prod->status = 'C';
+          fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
+          fwrite(prod,sizeof(Estoque),1,fp);
+          printf("\nAtualizado com sucesso!                                       \n");
+        }else{
+          printf("\nCerto, o produto permanece intacto...\n");
+        }
+      }else{
+        printf("\nO produto %s nao foi encontrado...\n",pesquisa);
+      }
     }
     free(prod);
     fclose(fp);
@@ -201,35 +201,35 @@ void remove_prod(void){
   fp = fopen("produto.dat","r+b");
   if (fp==NULL){
     printf("\nOps!Ocorreu um erro ao tentar abrir o arquivo!\nTente rodar o programa novamente...\n");
-    exit(1);
-  }
-  printf("\nInforme o codigo do produto: ");
-  scanf("%20[^\n]",pesquisa);
-  prod = (Estoque*) malloc(sizeof(Estoque));
-  achou = 0;
-  while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
-    if((strcmp(prod->cod,pesquisa)==0)&&(prod->status=='C')){
-      achou = 1;
-    }
-  }
-  if (achou){
-    exibe_estoque(prod);
-    getchar();
-    printf("Quer realmente deletar esse produto (s/n)? ");
-    scanf("%c",&resposta);
-    getchar();
-    if(resposta == 's' || resposta == 'S'){
-      prod -> status = 'D';
-      fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
-      fwrite(prod,sizeof(Estoque),1,fp);
-      printf("\nUsuario deletado com sucesso!\n");
-    }else{
-      printf("\nCerto, o produto permanece cadastrado\n");
-    }
   }else{
-    printf("\nO produto %s encontra-se inexistente...",pesquisa);
+    printf("\nInforme o codigo do produto: ");
+    scanf("%20[^\n]",pesquisa);
+    prod = (Estoque*) malloc(sizeof(Estoque));
+    achou = 0;
+    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+      if((strcmp(prod->cod,pesquisa)==0)&&(prod->status=='C')){
+        achou = 1;
+      }
+    }
+    if (achou){
+      exibe_estoque(prod);
+      getchar();
+      printf("Quer realmente deletar esse produto (s/n)? ");
+      scanf("%c",&resposta);
+      getchar();
+      if(resposta == 's' || resposta == 'S'){
+        prod -> status = 'D';
+        fseek(fp,(-1)*sizeof(Estoque),SEEK_CUR);
+        fwrite(prod,sizeof(Estoque),1,fp);
+        printf("\nUsuario deletado com sucesso!\n");
+      }else{
+        printf("\nCerto, o produto permanece cadastrado\n");
+      }
+    }else{
+      printf("\nO produto %s encontra-se inexistente...",pesquisa);
+    }
+    free(prod);
   }
-  free(prod);
   fclose(fp);
 
 }
@@ -254,25 +254,24 @@ void mod_es_procurar(void){
     fp = fopen("produto.dat","rb");
     if (fp == NULL){
       printf("Infelizmente o arquivo apresentou algum erro...\n");
-      exit(1);
-    }
-    printf("Informe o codigo do produto: ");
-    scanf("%20[^\n]",pesquisa);
-    prod = (Estoque*) malloc(sizeof(Estoque));
-    achou = 0;
-    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
-      if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
-        achou = 1;
-      }
-    }
-    if (achou){
-      exibe_estoque(prod);
     }else{
-      printf("\nProduto inacessivel...\n");
+      printf("Informe o codigo do produto: ");
+      scanf("%20[^\n]",pesquisa);
+      prod = (Estoque*) malloc(sizeof(Estoque));
+      achou = 0;
+      while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+        if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
+          achou = 1;
+        }
+      }
+      if (achou){
+        exibe_estoque(prod);
+      }else{
+        printf("\nProduto inacessivel...\n");
+      }
+      free(prod);
     }
-    free(prod);
     fclose(fp);
-    getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
@@ -311,11 +310,11 @@ void exibe_estoque_venda_v() {
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tivemos que encerrar o programa...\n");
-    exit(1);
-  }
-  while(fread(al, sizeof(Estoque), 1, fp)) {
-    if (al->status != 'x') {
-      exibe_estoque_venda(al);
+  }else{
+    while(fread(al, sizeof(Estoque), 1, fp)) {
+      if (al->status != 'x') {
+        exibe_estoque_venda(al);
+      }
     }
   }
   fclose(fp);
@@ -332,11 +331,11 @@ void exibe_estoque_venda_re() {
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tivemos que encerrar o programa...\n");
-    exit(1);
-  }
-  while(fread(al, sizeof(Estoque), 1, fp)) {
-    if (al->status != 'x') {
-      exibe_venda_re(al);
+  }else{
+    while(fread(al, sizeof(Estoque), 1, fp)) {
+      if (al->status != 'x') {
+        exibe_venda_re(al);
+      }
     }
   }
   fclose(fp);
@@ -365,8 +364,6 @@ void exibe_estoque_venda(Estoque* al) {
     printf("Valor: %.2f\n", al->preco_v);
   }
 }
-
-
 //
 //exibir lista
 //
@@ -378,11 +375,11 @@ void exibe_lista_es(){
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tivemos que encerrar o programa...\n");
-    exit(1);
-  }
-  while(fread(aln, sizeof(Estoque), 1, fp)) {
-    if (aln->status != 'x') {
-      exibe_estoque(aln);
+  }else{
+    while(fread(aln, sizeof(Estoque), 1, fp)) {
+      if (aln->status != 'x') {
+        exibe_estoque(aln);
+      }
     }
   }
   fclose(fp);

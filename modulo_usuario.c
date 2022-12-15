@@ -138,13 +138,13 @@ void listar_user(void){
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tivemos que encerrar o programa...\n");
-    exit(1);
-  }
-  while(fread(aln, sizeof(Usuario), 1, fp)) {
-    if (aln->status != 'x') {
-      achou += 1;
-      printf ("\n  - Usuario %d - \n",achou);
-      exibe_usuario(aln);
+  }else{
+    while(fread(aln, sizeof(Usuario), 1, fp)) {
+      if (aln->status != 'x') {
+        achou += 1;
+        printf ("\n  - Usuario %d - \n",achou);
+        exibe_usuario(aln);
+      }
     }
   }
   fclose(fp);
@@ -181,59 +181,61 @@ void atualiza_user(void){
   fp = fopen("user.dat","r+b");
   if (fp == NULL){
     printf("Infelizmente o arquivo apresentou algum erro...\n");
-    exit(1);
-  }
-  printf("\nInforme o CPF do usuario: ");
-  scanf("%20[^\n]",pesquisa);
-  primeiro = (Usuario*) malloc(sizeof(Usuario));
-  achou = 0;
-  while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
-    if ((strcmp(primeiro->cpf,pesquisa) == 0)&& (primeiro -> status == 'C')){
-      achou = 1;
+    getchar();
+  }else{
+    printf("\nInforme o CPF do usuario: ");
+    scanf("%20[^\n]",pesquisa);
+    primeiro = (Usuario*) malloc(sizeof(Usuario));
+    achou = 0;
+    while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
+      if ((strcmp(primeiro->cpf,pesquisa) == 0)&& (primeiro -> status == 'C')){
+        achou = 1;
+      }
     }
-  }
-  if (achou){
-    exibe_usuario(primeiro);
-    getchar();
-    printf("Deseja realmente alterar esse usuario (s/n)? ");
-    scanf("%c",&resp);
-    getchar();
-    if (resp == 's' || resp == 'S'){
-      printf("Informe seu nome: ");
-      scanf ("%30[^\n]",primeiro->nome);
+    if (achou){
+      exibe_usuario(primeiro);
       getchar();
-      printf("Sua data de nascimento (dd/mm/aa): ");
-      scanf ("%20[^\n]",primeiro->data);
+      printf("Deseja realmente alterar esse usuario (s/n)? ");
+      scanf("%c",&resp);
       getchar();
-      printf("Email: ");
-      scanf("%40[^\n]",primeiro->email);
-      getchar();
-      if (email_validacao(primeiro->email)){
-        printf("Telefone (99) 99999-9999: ");
-        scanf ("%20[^\n]",primeiro->numero);
+      if (resp == 's' || resp == 'S'){
+        printf("Informe seu nome: ");
+        scanf ("%30[^\n]",primeiro->nome);
         getchar();
-        printf("CPF: ");
-        scanf("%20[^\n]",primeiro->cpf);
+        printf("Sua data de nascimento (dd/mm/aa): ");
+        scanf ("%20[^\n]",primeiro->data);
         getchar();
-        if (validarCPF(primeiro->cpf)){
-          primeiro->status = 'C';
-          primeiro->status = 'C';
-          fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
-          fwrite(primeiro,sizeof(Usuario),1,fp);
-          printf("\nUsuario alterado com sucesso!\n");
+        printf("Email: ");
+        scanf("%40[^\n]",primeiro->email);
+        getchar();
+        if (email_validacao(primeiro->email)){
+          printf("Telefone (99) 99999-9999: ");
+          scanf ("%20[^\n]",primeiro->numero);
+          getchar();
+          printf("CPF: ");
+          scanf("%20[^\n]",primeiro->cpf);
+          getchar();
+          if (validarCPF(primeiro->cpf)){
+            primeiro->status = 'C';
+            primeiro->status = 'C';
+            fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
+            fwrite(primeiro,sizeof(Usuario),1,fp);
+            printf("\nUsuario alterado com sucesso!\n");
+          }else{
+            printf("\nCPF invalido...");
+          }
         }else{
-          printf("\nCPF invalido...");
+          printf("\nEmail invalido...");
         }
       }else{
-        printf("\nEmail invalido...");
+        printf("\nCerto, seus dados permanecem intactos...\n");
       }
     }else{
-      printf("\nCerto, seus dados permanecem intactos...\n");
+      printf("O cpf %s nao foi encontrado...\n",pesquisa);
+      getchar();
     }
-  }else{
-    printf("O usuario %s nao foi encontrado...\n",pesquisa);
+    free(primeiro);
   }
-  free(primeiro);
   fclose(fp);
 
 }
@@ -269,35 +271,36 @@ void remove_usuario(void){
   fp = fopen("user.dat","r+b");
   if (fp==NULL){
     printf("\nOps!Ocorreu um erro ao tentar abrir o arquivo!\nTente rodar o programa novamente...\n");
-    exit(1);
-  }
-  printf("\nInforme o CPF: ");
-  scanf("%20[^\n]",pesquisa);
-  primeiro = (Usuario*) malloc(sizeof(Usuario));
-  achou = 0;
-  while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
-    if((strcmp(primeiro->cpf,pesquisa)==0)&&(primeiro->status=='C')){
-      achou = 1;
-    }
-  }
-  if (achou){
-    exibe_usuario(primeiro);
-    getchar();
-    printf("Quer realmente deletar esse usuario (s/n)? ");
-    scanf("%c",&resposta);
-    getchar();
-    if(resposta == 's' || resposta == 'S'){
-      primeiro -> status = 'D';
-      fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
-      fwrite(primeiro,sizeof(Usuario),1,fp);
-      printf("\nUsuario deletado com sucesso!\n");
-    }else{
-      printf("\nCerto, o usuario permanece cadastrado\n");
-    }
   }else{
-    printf("\nO usuario %s encontra-se inexistente...",pesquisa);
+    printf("\nInforme o CPF: ");
+    scanf("%20[^\n]",pesquisa);
+    primeiro = (Usuario*) malloc(sizeof(Usuario));
+    achou = 0;
+    while ((!achou)&&(fread(primeiro,sizeof(Usuario),1,fp))){
+      if((strcmp(primeiro->cpf,pesquisa)==0)&&(primeiro->status=='C')){
+        achou = 1;
+      }
+    }
+    if (achou){
+      exibe_usuario(primeiro);
+      getchar();
+      printf("Quer realmente deletar esse usuario (s/n)? ");
+      scanf("%c",&resposta);
+      getchar();
+      if(resposta == 's' || resposta == 'S'){
+        primeiro -> status = 'D';
+        fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
+        fwrite(primeiro,sizeof(Usuario),1,fp);
+        printf("\nUsuario deletado com sucesso!\n");
+      }else{
+        printf("\nCerto, o usuario permanece cadastrado\n");
+      }
+    }else{
+      printf("\nO cpf %s encontra-se inexistente...",pesquisa);
+    }
+    getchar();
+    free(primeiro);
   }
-  free(primeiro);
   fclose(fp);
 }
 //
