@@ -24,20 +24,19 @@ void mod_relatorio(void)
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Listar Relatorio de vendas                                ///\n");
-    printf("///            2. Listar Gastos                                             ///\n");
-    printf("///            3. Listar Lucros                                             ///\n");
+    printf("///            2. Listar Usuarios                                           ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n             O que deseja? ");
     scanf("%c",&perg);
     getchar();
+
+ 
     if (perg=='1'){
         mod_venda_listar();
     }else if(perg == '2'){
-        mod_rt_listar_gastos();
-    }else if (perg=='3'){
-        mod_rt_listar_lucros();
+        mod_usuario_relatorio();
     }else{
 
     }
@@ -47,23 +46,40 @@ void mod_relatorio(void)
 //LISTAR VENDA
 //
 void mod_venda_listar(){
+    char perg;
     setlocale(LC_ALL,"Portuguese");
     printf("\n");
     system("cls||clear");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                               Menu Venda                                ///\n");
+    printf("///                             Menu Relatorio                              ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///                              Listar Vendas                              ///\n");
+    printf("///            1. Listar Relatorio de vendas                                ///\n");
+    printf("///            2. Listar gastos                                             ///\n");
+    printf("///            3. Listar lucros                                             ///\n");
+    printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\nVendas efetuadas:\n");
-    listar_venda();
-    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    getchar();
-}
+    printf("\n             O que deseja? ");
+    scanf("%c",&perg);
+    getchar();    
+    if(perg == '1'){
+        listar_venda();
+    }else if (perg=='2'){
+        mod_rt_listar_gastos();
+    }else if (perg=='3'){
+        mod_rt_listar_lucros();
+    }else{
 
+    }
+    
+}
+//
+//LISTAR USUARIOS
+//
+void mod_usuario_relatorio(void){
+    printf("\nEm andamento...");
+}
 //
 //LISTAR GASTOS
 //
