@@ -10,6 +10,7 @@ struct venda {
 
 Venda* mod_venda(void);
 void grava_venda(Venda*);
-void listar_venda(void);
+void listar_venda();
 void exibe_venda(Venda*);
-void mod_venda_listar();
+void mod_venda_listar(void);
+char* gerar_cod(void);
