@@ -120,8 +120,10 @@ void listar_venda(void){
   fp = fopen("venda.dat", "rb");
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Tivemos que encerrar o programa...\n");
+    printf("Tente novamente...\n");
+    getchar();
   }else{
+    printf("\nVendas efetuadas:\n");
     while(fread(aln, sizeof(Venda), 1, fp)) {
       if (aln->status != 'x') {
         achou += 1;
@@ -132,6 +134,7 @@ void listar_venda(void){
   }
   fclose(fp);
   free(aln);
+
 }
 //
 //EXIBE VENDA

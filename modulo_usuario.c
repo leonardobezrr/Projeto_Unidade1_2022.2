@@ -137,7 +137,7 @@ void listar_user(void){
   fp = fopen("user.dat", "rb");
   if (fp == NULL) {
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Tivemos que encerrar o programa...\n");
+    printf("Tente novamente...\n");
   }else{
     while(fread(aln, sizeof(Usuario), 1, fp)) {
       if (aln->status != 'x') {
