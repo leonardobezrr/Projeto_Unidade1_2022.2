@@ -4,7 +4,7 @@ typedef struct venda Venda;
 struct venda {
   char cod[21];
   float qnt;
-  float preco;
+  float preco_v;
   char status;
 };
 

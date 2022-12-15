@@ -78,11 +78,12 @@ void mod_rt_listar_gastos(void){
     printf("///                         Listar Gastos                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("Relatorio de gastos:\n");
-    printf("Codigo do produto: 2145\n");
-    printf("Nome do produto: Omeprasol\n");
-    printf("Quantidade de produtos: 2\n");
-    printf("Valor Unitario do produto: 30\n\n");
+    printf("\n\nRelatorio de gastos:\n");
+    printf("Codigo do produto: 123\n");
+    printf("Nome do produto: Rivotril\n");
+    printf("Quantidade de produtos: 100\n");
+    printf("Valor Unitario do produto: 49,90\n");
+    printf("Valor total: 4990,00\n\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }

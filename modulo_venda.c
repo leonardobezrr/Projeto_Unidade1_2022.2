@@ -5,15 +5,18 @@
 #include <time.h> 
 #include "modulo_venda.h"
 #include "modulo_estoque.h"
-
+#include "modulo_usuario.h"
 //
 ////  MENU VENDA
 //
 Venda* mod_venda(void){
+    Usuario* user;
     Venda* primeiro;
     Estoque* prod;
     FILE* fp;
+    FILE* fp_us;
     int achou;
+    int achou_us;
     char pesquisa[21];
     char pergunta;
     system("cls||clear");
@@ -24,46 +27,70 @@ Venda* mod_venda(void){
     printf("///                               Menu Venda                                ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
-    primeiro = (Venda*) malloc(sizeof(Venda));
-    printf("Informe o codigo do produto: ");
-    scanf("%20[^\n]",pesquisa);
-    getchar();
-    //Procurando produto no estoque
-    fp = fopen("produto.dat","rb");
-    if (fp == NULL){
+    fp_us = fopen("user.dat","rb");
+    if (fp_us == NULL){
       printf("Infelizmente o arquivo apresentou algum erro...\n");
       exit(1);
     }
-    prod = (Estoque*) malloc(sizeof(Estoque));
-    achou = 0;
-    while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
-      if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
-        achou = 1;
+    printf("Informe o CPF do cliente (cadastrar caso seja preciso): ");
+    scanf("%20[^\n]",pesquisa);
+    getchar();
+    user = (Usuario*) malloc(sizeof(Usuario));
+
+    achou_us = 0;
+    while ((!achou_us)&&(fread(user,sizeof(Usuario),1,fp_us))){
+      if ((strcmp(user->cpf,pesquisa) == 0)&& (user -> status == 'C')){
+        achou_us = 1;
       }
     }
-    if (achou){
-      exibe_estoque_venda(prod);
-      printf("\nEste produto que deseja (s/n) ? ");
-      scanf ("%c",&pergunta);
-      if (pergunta == 's' || pergunta == 'S'){
-        printf("Informe a quantidade: ");
-        scanf ("%f[^\n]",&primeiro->qnt);
-        getchar();
-        primeiro->preco = (primeiro->qnt)*(prod->preco);
-        printf("\n\n\n       Venda feita com sucesso!\n");
-      }else{
-        printf("\nCerto, entao tente novamente...");
+    if (achou_us){
+      printf("\nUsuario encontrado: %s!\n",user->nome);
+      primeiro = (Venda*) malloc(sizeof(Venda));
+      printf("Informe o codigo do produto: ");
+      scanf("%20[^\n]",pesquisa);
+      getchar();
+      //Procurando produto no estoque
+      fp = fopen("produto.dat","rb");
+      if (fp == NULL){
+        printf("Infelizmente o arquivo apresentou algum erro...\n");
         exit(1);
       }
+      prod = (Estoque*) malloc(sizeof(Estoque));
+      achou = 0;
+      while ((!achou)&&(fread(prod,sizeof(Estoque),1,fp))){
+        if ((strcmp(prod->cod,pesquisa) == 0)&& (prod -> status == 'C')){
+          achou = 1;
+        }
+      }
+      if (achou){
+        exibe_estoque_venda(prod);
+        printf("\nEste produto que deseja (s/n) ? ");
+        scanf ("%c",&pergunta);
+        if (pergunta == 's' || pergunta == 'S'){
+          printf("Informe a quantidade: ");
+          scanf ("%f[^\n]",&primeiro->qnt);
+          getchar();
+          primeiro->preco_v = (primeiro->qnt)*(prod->preco_v);
+          printf("\n\n\n       Venda feita com sucesso!\n");
+        }else{
+          printf("\nCerto, entao tente novamente...");
+          exit(1);
+        }
+      }else{
+        printf("\nProduto inacessivel...\nTente novamente!");
+        exit(1);
+      }
+      primeiro->status = 'C';
+      grava_venda(primeiro);
     }else{
-      printf("\nProduto inacessivel...\nTente novamente!");
-      exit(1);
+        printf("\nUsuario inacessivel...\n");
     }
-    primeiro->status = 'C';
-    grava_venda(primeiro);
+    
     free(primeiro);
     free(prod);
     fclose(fp);
+    free(user);
+    fclose(fp_us);
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
     return primeiro;
@@ -116,7 +143,7 @@ void exibe_venda(Venda* primeiro) {
   } else {
     printf("\nCodigo do produto: 123\n");
     printf("Quantidade: %.f\n", primeiro->qnt);
-    printf("Valor: %.2f\n", primeiro->preco);
+    printf("Valor: %.2f\n", primeiro->preco_v);
     if (primeiro->status == 'C') {
       strcpy(situacao, "Cadastrado\n");
     } else {
