@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h> 
 #include "modulo_venda.h"
 #include "modulo_estoque.h"
 
@@ -113,7 +114,7 @@ void exibe_venda(Venda* primeiro) {
   if ((primeiro == NULL) || (primeiro->status == 'x')) {
     printf("\n---Venda Inexistente---\n");
   } else {
-    printf("\nCodigo do produto: 123");
+    printf("\nCodigo do produto: 123\n");
     printf("Quantidade: %.f\n", primeiro->qnt);
     printf("Valor: %.2f\n", primeiro->preco);
     if (primeiro->status == 'C') {
@@ -124,5 +125,22 @@ void exibe_venda(Venda* primeiro) {
     printf("Status da venda: %s\n", situacao);
   }
 }
+//
+//GERAR COD - baseada na função de Dayanne Xavier
+//
+char* gerar_cod(void) {
 
+    char* date = (char*) malloc(20 * sizeof(char));
+
+    time_t temp = time(NULL);
+
+    struct tm* t = localtime(&temp);
+
+    strftime(date, 50, "%d%m%y%H%M%S", t);
+
+    // dia, mes, ano, horas, minutos, segundo
+
+    return date;
+
+}
 
