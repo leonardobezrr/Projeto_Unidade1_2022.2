@@ -288,7 +288,7 @@ void remove_usuario(void){
       scanf("%c",&resposta);
       getchar();
       if(resposta == 's' || resposta == 'S'){
-        primeiro -> status = 'D';
+        primeiro -> status = 'x';
         fseek(fp,(-1)*sizeof(Usuario),SEEK_CUR);
         fwrite(primeiro,sizeof(Usuario),1,fp);
         printf("\nUsuario deletado com sucesso!\n");

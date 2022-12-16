@@ -4,8 +4,8 @@
 #include <string.h>
 #include "modulo_relatorio.h"
 #include "modulo_venda.h"
-
-
+#include "modulo_usuario.h"
+void exibe_usuario_re(Usuario*);
 
 
 
@@ -78,7 +78,109 @@ void mod_venda_listar(){
 //LISTAR USUARIOS
 //
 void mod_usuario_relatorio(void){
-    printf("\nEm andamento...");
+    char perg;
+    setlocale(LC_ALL,"Portuguese");
+    printf("\n");
+    system("cls||clear");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                             Menu Relatorio                              ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. Listar todos os usuarios                                  ///\n");
+    printf("///            2. Listar usuarios cadastrados                               ///\n");
+    printf("///            3. Listar usuarios deletados                                 ///\n");
+    printf("///            0. Sair                                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n             O que deseja? ");
+    scanf("%c",&perg);
+    getchar();   
+    if(perg == '1'){
+        listar_user_todos();
+        getchar();
+    }else if (perg=='2'){
+        listar_user();
+        getchar();
+    }else if (perg=='3'){
+        listar_user_deletados();
+        getchar();
+    }else{
+
+    } 
+}
+//
+//LISTA USUARIO deletado
+//
+void listar_user_deletados(void){
+  FILE* fp;
+  Usuario* aln;
+  int achou;
+  achou = 0;
+  aln = (Usuario*) malloc(sizeof(Usuario));
+  fp = fopen("user.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tente novamente...\n");
+  }else{
+    while(fread(aln, sizeof(Usuario), 1, fp)) {
+      if (aln->status == 'x') {
+        achou += 1;
+        printf ("\n  - Usuario %d - \n",achou);
+        exibe_usuario_re(aln);
+      }
+    }
+  }
+  fclose(fp);
+  free(aln);
+}
+//
+//LISTA USUARIO todos
+//
+void listar_user_todos(void){
+  FILE* fp;
+  Usuario* aln;
+  int achou;
+  achou = 0;
+  aln = (Usuario*) malloc(sizeof(Usuario));
+  fp = fopen("user.dat", "rb");
+  if (fp == NULL) {
+    printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Tente novamente...\n");
+  }else{
+    while(fread(aln, sizeof(Usuario), 1, fp)) {
+      if (aln->status == 'x'||aln->status !='x') {
+        achou += 1;
+        printf ("\n  - Usuario %d - \n",achou);
+        exibe_usuario_re(aln);
+      }
+      else{
+        printf("\nNao existem usuarios cadastrados...\n");
+      }
+    }
+  }
+  fclose(fp);
+  free(aln);
+}
+//
+//EXIBE USUARIO listar
+//
+void exibe_usuario_re(Usuario* primeiro) {
+  char situacao[20];
+  if (primeiro == NULL) {
+    printf("\n---Usuario Inexistente---\n");
+  } else {
+    printf("\nNome do Usuario: %s\n", primeiro->nome);
+    printf("Email: %s\n", primeiro->email);
+    printf("Data: %s\n", primeiro->data);
+    printf("Telefone: %s\n", primeiro->numero);
+    printf("CPF: %s\n",primeiro->cpf);
+    if (primeiro->status == 'C') {
+      strcpy(situacao, "Cadastrado\n");
+    } else {
+      strcpy(situacao, "Deletado\n");
+    }
+    printf("Status do Usuario: %s\n", situacao);
+  }
 }
 //
 //LISTAR GASTOS
@@ -103,7 +205,6 @@ void mod_rt_listar_gastos(void){
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
 }
-
 //listar lucros
 void mod_rt_listar_lucros(void){
     setlocale(LC_ALL,"Portuguese");
