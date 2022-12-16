@@ -65,6 +65,7 @@ void mod_venda_listar(){
     getchar();    
     if(perg == '1'){
         listar_venda();
+        getchar();
     }else if (perg=='2'){
         mod_rt_listar_gastos();
     }else if (perg=='3'){
