@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include <unistd.h>
 #include "modulo_validacao.h"
 #include "modulo_usuario.h"
 //
@@ -74,14 +75,14 @@ Usuario* mod_us_cadastrar(void){
       printf("CPF: ");
       scanf("%20[^\n]",primeiro->cpf);
       getchar();
-      if (validarCPF(primeiro->cpf)){
+      if (!validarCPF(primeiro->cpf)){
         primeiro->status = 'C';
         grava_user(primeiro);
         free(primeiro);
         printf("\n               Cadastrado com sucesso!                                       \n");
         
       }else{
-        printf("\nCPF invalido...");
+        printf("\nUsuario ja cadastrado\n\tou\nCPF invalido\n");
       }
       
     }else{
@@ -90,6 +91,42 @@ Usuario* mod_us_cadastrar(void){
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
     return primeiro;
+}
+//
+//Encontar usuario Baseado no código de Dayanne Xavier 
+//
+Usuario* achar_user(char *cpf) { 
+    FILE* fp;
+    Usuario* primeiro;
+
+    if (access("user.dat", F_OK) != -1) {
+        fp = fopen("user.dat", "rb");
+
+        if (fp == NULL) {
+            printf("Ocorreu um erro na abertura do arquivo!\n");
+
+        }
+
+        else {
+
+            primeiro = (Usuario*) malloc(sizeof(Usuario));
+
+            while(fread(primeiro, sizeof(Usuario), 1, fp)) {
+
+                if ((strcmp(primeiro->cpf, cpf) == 0) && (primeiro->status != 'x')) {
+                    fclose(fp);
+                    return primeiro;
+
+                } 
+
+            }
+
+        }
+
+        fclose(fp);
+    }
+
+    return NULL;
 }
 //
 //GRAVAR DADO NO ARQUIVO 
@@ -144,6 +181,8 @@ void listar_user(void){
         achou += 1;
         printf ("\n  - Usuario %d - \n",achou);
         exibe_usuario(aln);
+      }else{
+        printf("\nTalvez nao haja nenhum usuario cadastrado...");
       }
     }
   }
@@ -298,7 +337,6 @@ void remove_usuario(void){
     }else{
       printf("\nO cpf %s encontra-se inexistente...",pesquisa);
     }
-    getchar();
     free(primeiro);
   }
   fclose(fp);
@@ -366,4 +404,53 @@ void mod_us_procurar(void){
     getchar();
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     getchar();
+}
+//Valida cpf baseado no codigo de https://gist.github.com/eduardoedson/8f991b6d234a9ebdcbe3
+int validarCPF(char *cpf)
+{
+    Usuario* primeiro;
+    int i, j, primeiro_nmr = 0, segundo_nmr = 0;
+    if(strlen(cpf) != 11)
+        return 0;
+    else if((strcmp(cpf,"00000000000") == 0) || (strcmp(cpf,"11111111111") == 0) || (strcmp(cpf,"22222222222") == 0) ||
+            (strcmp(cpf,"33333333333") == 0) || (strcmp(cpf,"44444444444") == 0) || (strcmp(cpf,"55555555555") == 0) ||
+            (strcmp(cpf,"66666666666") == 0) || (strcmp(cpf,"77777777777") == 0) || (strcmp(cpf,"88888888888") == 0) ||
+            (strcmp(cpf,"99999999999") == 0))
+        return 0; ///se o CPF tiver todos os números iguais ele é inválido.
+    else
+    {
+        ///primeiro digito 
+        for(i = 0, j = 10; i < strlen(cpf)-2; i++, j--) ///multiplica os números de 10 a 2 e soma os resultados dentro de primeiro_nmr
+            primeiro_nmr += (cpf[i]-48) * j;
+        primeiro_nmr %= 11;
+        if(primeiro_nmr < 2)
+            primeiro_nmr = 0;
+        else
+            primeiro_nmr = 11 - primeiro_nmr;
+        if((cpf[9]-48) != primeiro_nmr)
+            return 0; ///se o primeiro digito  não for o mesmo que o da validação CPF é inválido
+        else
+        ///segundo digito 
+        {
+            for(i = 0, j = 11; i < strlen(cpf)-1; i++, j--) ///multiplica os números de 11 a 2 e soma os resultados dentro de segundo_nmr
+                    segundo_nmr += (cpf[i]-48) * j;
+        segundo_nmr %= 11;
+        if(segundo_nmr < 2)
+            segundo_nmr = 0;
+        else
+            segundo_nmr = 11 - segundo_nmr;
+        if((cpf[10]-48) != segundo_nmr)
+            return 0; ///se o segundo digito  não for o mesmo que o da validação CPF é inválido
+        }
+    }
+    primeiro = achar_user(cpf);
+
+    if (primeiro != NULL) {
+
+        free(primeiro);
+        return 1;
+
+    }
+    free(primeiro);
+    return 0;
 }
