@@ -123,16 +123,20 @@ void listar_user_deletados(void){
     printf("\nOps! Ocorreu um erro na abertura do arquivo!\n");
     printf("Tente novamente...\n");
   }else{
-    while(fread(aln, sizeof(Usuario), 1, fp)) {
-      if (aln->status == 'x') {
-        achou += 1;
-        printf ("\n  - Usuario %d - \n",achou);
-        exibe_usuario_re(aln);
+    if (aln->status == 'x'){
+      while(fread(aln, sizeof(Usuario), 1, fp)) {
+        if (aln->status == 'x') {
+          achou += 1;
+          printf ("\n  - Usuario %d - \n",achou);
+          exibe_usuario_re(aln);
+        }
       }
+    }else{
+      printf("\nTalvez nao haja nenhum usuario deletado...");
     }
-  }
   fclose(fp);
   free(aln);
+  }
 }
 //
 //LISTA USUARIO todos
